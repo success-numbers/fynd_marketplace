@@ -98,9 +98,6 @@
         },
         "modelsLayer": {}
       },
-      "roles": {
-        "lambdaRole": "role/pod-role"
-      },
       "tags": {
         "tagid": "Usage",
         "tagval": "FYNDMARKETPLACESIT"
