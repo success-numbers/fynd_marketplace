@@ -1,0 +1,7 @@
+cdk deploy --all --profile default -c deploy-environment=sit
+cdk destroy --all --profile default -c deploy-environment=sit
+
+cdk deploy fynd-marketplace-dev-layers-stack --profile default -c deploy-environment=sit
+cdk deploy fynd-marketplace-dev-common-stack --profile default -c deploy-environment=sit
+cdk deploy fynd-marketplace-dev-dynamodb-stack --profile default -c deploy-environment=sit
+cdk deploy fynd-marketplace-dev-buisness-stack --profile default -c deploy-environment=sit
