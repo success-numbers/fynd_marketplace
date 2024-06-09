@@ -94,7 +94,7 @@
       "layers": {
         "npmLayer": {
           "name": "NPMPackagesLayer",
-          "version": "1"
+          "version": "2"
         },
         "modelsLayer": {}
       },
