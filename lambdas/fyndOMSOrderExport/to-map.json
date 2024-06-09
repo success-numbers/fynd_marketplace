@@ -1,0 +1,115 @@
+{
+    "shipping-lineitems": {
+        "shipping-lineitem": [
+            {
+                "net-price": 0,
+                "tax": 0,
+                "gross-price": 0,
+                "base-price": 0,
+                "lineitem-text": "Shipping",
+                "tax-basis": 0,
+                "item-id": "STANDARD_SHIPPING",
+                "shipment-id": 452155,
+                "tax-rate": 0.15
+            },
+            {
+                "net-price": 0,
+                "tax": 0,
+                "gross-price": 0,
+                "base-price": 0,
+                "lineitem-text": "Shipping",
+                "tax-basis": 0,
+                "item-id": "STANDARD_SHIPPING",
+                "shipment-id": 452155,
+                "tax-rate": 0.15
+            }
+        ]
+    },
+    "totals": {
+        "merchandize-total": {
+            "net-price": 346.96,
+            "tax": 52.04,
+            "gross-price": 399,
+            "price-adjustments": {
+                "price-adjustment": [
+                    {
+                        "net-price": -52.04,
+                        "tax": -7.81,
+                        "gross-price": -59.85,
+                        "base-price": -59.85,
+                        "lineitem-text": "App-15%",
+                        "tax-basis": -59.85,
+                        "promotion-id": "App-15%",
+                        "campaign-id": "App Coupon Code 15%",
+                        "coupon-id": "App15",
+                        "discount": {
+                            "percentage": 15
+                        }
+                    }
+                ]
+            }
+        },
+        "adjusted-merchandize-total": {
+            "net-price": 294.92,
+            "tax": 44.23,
+            "gross-price": 339.15
+        },
+        "shipping-total": {
+            "net-price": 0,
+            "tax": 0,
+            "gross-price": 0
+        },
+        "adjusted-shipping-total": {
+            "net-price": 0,
+            "tax": 0,
+            "gross-price": 0
+        },
+        "order-total": {
+            "net-price": 294.92,
+            "tax": 44.23,
+            "gross-price": 339.15
+        }
+    },
+    "payments": {
+        "payment": [
+            {
+                "credit-card": {
+                    "card-type": "Master Card",
+                    "card-number": "XXXX-XXXX-XXXX-2994",
+                    "expiration-month": 9,
+                    "expiration-year": 2024
+                },
+                "amount": 339.15,
+                "processor-id": "CHECKOUTCOM_CARD",
+                "transaction-id": "pay_gmafzrh7zltupcvtunkfpv75ye",
+                "transaction-type": "CAPTURE",
+                "custom-attributes": {
+                    "custom-attribute": [
+                        "act_qtxaszkr6u3utghesokv67rhvi",
+                        true,
+                        "Capture"
+                    ]
+                }
+            },
+            {
+                "credit-card": {
+                    "card-type": "Master Card",
+                    "card-number": "XXXX-XXXX-XXXX-2994",
+                    "expiration-month": 9,
+                    "expiration-year": 2024
+                },
+                "amount": 339.15,
+                "processor-id": "CHECKOUTCOM_CARD",
+                "transaction-id": "pay_gmafzrh7zltupcvtunkfpv75ye",
+                "transaction-type": "CAPTURE",
+                "custom-attributes": {
+                    "custom-attribute": [
+                        "act_qtxaszkr6u3utghesokv67rhvi",
+                        true,
+                        "Capture"
+                    ]
+                }
+            }
+        ]
+    }
+}

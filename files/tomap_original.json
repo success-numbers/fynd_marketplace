@@ -1,0 +1,364 @@
+{
+    "orders": {
+      "order": {
+        "order-date": "2024-04-26T06:45:24.000Z",
+        "created-by": "storefront",
+        "original-order-no": "SA00598906",
+        "currency": "SAR",
+        "customer-locale": "ar_SA",
+        "taxation": "gross",
+        "invoice-no": 531500,
+        "customer": {
+          "guest": false,
+          "customer-no": 433922,
+          "customer-name": "amani maash",
+          "customer-email": "amanimaash@hotmail.com",
+          "billing-address": {
+            "first-name": "amani",
+            "last-name": "maash",
+            "address1": "شارع محمد الترمذي",
+            "city": "Jeddah",
+            "country-code": "SA",
+            "phone": "+966 537071285",
+            "custom-attributes": {
+              "custom-attribute": [
+                "Al Hamdaniah",
+                "amanimaash@hotmail.com",
+                "nice_1714106510.604217"
+              ]
+            }
+          }
+        },
+        "status": {
+          "order-status": "NEW",
+          "shipping-status": "NOT_SHIPPED",
+          "confirmation-status": "CONFIRMED",
+          "payment-status": "PAID"
+        },
+        "channel-type": "Storefront",
+        "current-order-no": "SA00598906",
+        "product-lineitems": {
+          "product-lineitem": [
+            {
+              "net-price": 346.96,
+              "tax": 52.04,
+              "gross-price": 399,
+              "base-price": 399,
+              "lineitem-text": "مجموعة شنط سفر 3 أحجام بلاستيك متين من ترافل فيجين باللون الأزرق الداكن",
+              "tax-basis": 399,
+              "position": 1,
+              "product-id": 100115058,
+              "product-name": "مجموعة شنط سفر 3 أحجام بلاستيك متين من ترافل فيجين باللون الأزرق الداكن",
+              "quantity": 1,
+              "tax-rate": 0.15,
+              "shipment-id": 452155,
+              "gift": false,
+              "custom-attributes": {
+                "custom-attribute": [
+                  339.15,
+                  339.15,
+                  "[{\"promoId\":\"App-15%\",\"name\":null,\"discount\":-59.85}]"
+                ]
+              }
+            },
+            {
+              "net-price": 346.96,
+              "tax": 52.04,
+              "gross-price": 399,
+              "base-price": 399,
+              "lineitem-text": "مجموعة شنط سفر 3 أحجام بلاستيك متين من ترافل فيجين باللون الأزرق الداكن",
+              "tax-basis": 399,
+              "position": 1,
+              "product-id": 100115058,
+              "product-name": "مجموعة شنط سفر 3 أحجام بلاستيك متين من ترافل فيجين باللون الأزرق الداكن",
+              "quantity": 1,
+              "tax-rate": 0.15,
+              "shipment-id": 452155,
+              "gift": false,
+              "custom-attributes": {
+                "custom-attribute": [
+                  339.15,
+                  339.15,
+                  "[{\"promoId\":\"App-15%\",\"name\":null,\"discount\":-59.85}]"
+                ]
+              }
+            }
+          ]
+        },
+        "shipping-lineitems": {
+          "shipping-lineitem": [
+            {
+              "net-price": 0,
+              "tax": 0,
+              "gross-price": 0,
+              "base-price": 0,
+              "lineitem-text": "Shipping",
+              "tax-basis": 0,
+              "item-id": "STANDARD_SHIPPING",
+              "shipment-id": 452155,
+              "tax-rate": 0.15
+            },
+            {
+              "net-price": 0,
+              "tax": 0,
+              "gross-price": 0,
+              "base-price": 0,
+              "lineitem-text": "Shipping",
+              "tax-basis": 0,
+              "item-id": "STANDARD_SHIPPING",
+              "shipment-id": 452155,
+              "tax-rate": 0.15
+            }
+          ]
+        },
+        "shipments": {
+          "shipment": [
+            {
+              "status": {
+                "shipping-status": "NOT_SHIPPED"
+              },
+              "shipping-method": 1,
+              "shipping-address": {
+                "first-name": "amani",
+                "last-name": "maash",
+                "address1": "شارع محمد الترمذي",
+                "city": "Jeddah",
+                "country-code": "SA",
+                "phone": "+966 537071285",
+                "custom-attributes": {
+                  "custom-attribute": [
+                    "Al Hamdaniah",
+                    "amanimaash@hotmail.com",
+                    "nice_1714106510.604217"
+                  ]
+                }
+              },
+              "gift": false,
+              "totals": {
+                "merchandize-total": {
+                  "net-price": 346.96,
+                  "tax": 52.04,
+                  "gross-price": 399
+                },
+                "adjusted-merchandize-total": {
+                  "net-price": 346.96,
+                  "tax": 52.04,
+                  "gross-price": 399
+                },
+                "shipping-total": {
+                  "net-price": 0,
+                  "tax": 0,
+                  "gross-price": 0
+                },
+                "adjusted-shipping-total": {
+                  "net-price": 0,
+                  "tax": 0,
+                  "gross-price": 0
+                },
+                "shipment-total": {
+                  "net-price": 346.96,
+                  "tax": 52.04,
+                  "gross-price": 399
+                }
+              }
+            },
+            {
+              "status": {
+                "shipping-status": "NOT_SHIPPED"
+              },
+              "shipping-method": 1,
+              "shipping-address": {
+                "first-name": "amani",
+                "last-name": "maash",
+                "address1": "شارع محمد الترمذي",
+                "city": "Jeddah",
+                "country-code": "SA",
+                "phone": "+966 537071285",
+                "custom-attributes": {
+                  "custom-attribute": [
+                    "Al Hamdaniah",
+                    "amanimaash@hotmail.com",
+                    "nice_1714106510.604217"
+                  ]
+                }
+              },
+              "gift": false,
+              "totals": {
+                "merchandize-total": {
+                  "net-price": 346.96,
+                  "tax": 52.04,
+                  "gross-price": 399
+                },
+                "adjusted-merchandize-total": {
+                  "net-price": 346.96,
+                  "tax": 52.04,
+                  "gross-price": 399
+                },
+                "shipping-total": {
+                  "net-price": 0,
+                  "tax": 0,
+                  "gross-price": 0
+                },
+                "adjusted-shipping-total": {
+                  "net-price": 0,
+                  "tax": 0,
+                  "gross-price": 0
+                },
+                "shipment-total": {
+                  "net-price": 346.96,
+                  "tax": 52.04,
+                  "gross-price": 399
+                }
+              }
+            }
+          ]
+        },
+        "totals": {
+          "merchandize-total": {
+            "net-price": 346.96,
+            "tax": 52.04,
+            "gross-price": 399,
+            "price-adjustments": {
+              "price-adjustment": {
+                "net-price": -52.04,
+                "tax": -7.81,
+                "gross-price": -59.85,
+                "base-price": -59.85,
+                "lineitem-text": "App-15%",
+                "tax-basis": -59.85,
+                "promotion-id": "App-15%",
+                "campaign-id": "App Coupon Code 15%",
+                "coupon-id": "App15",
+                "discount": {
+                  "percentage": 15
+                }
+              }
+            }
+          },
+          "adjusted-merchandize-total": {
+            "net-price": 294.92,
+            "tax": 44.23,
+            "gross-price": 339.15
+          },
+          "shipping-total": {
+            "net-price": 0,
+            "tax": 0,
+            "gross-price": 0
+          },
+          "adjusted-shipping-total": {
+            "net-price": 0,
+            "tax": 0,
+            "gross-price": 0
+          },
+          "order-total": {
+            "net-price": 294.92,
+            "tax": 44.23,
+            "gross-price": 339.15
+          }
+        },
+        "payments": {
+          "payment": [
+            {
+              "credit-card": {
+                "card-type": "Master Card",
+                "card-number": "XXXX-XXXX-XXXX-2994",
+                "expiration-month": 9,
+                "expiration-year": 2024
+              },
+              "amount": 339.15,
+              "processor-id": "CHECKOUTCOM_CARD",
+              "transaction-id": "pay_gmafzrh7zltupcvtunkfpv75ye",
+              "transaction-type": "CAPTURE",
+              "custom-attributes": {
+                "custom-attribute": [
+                  "act_qtxaszkr6u3utghesokv67rhvi",
+                  true,
+                  "Capture"
+                ]
+              }
+            },
+            {
+              "credit-card": {
+                "card-type": "Master Card",
+                "card-number": "XXXX-XXXX-XXXX-2994",
+                "expiration-month": 9,
+                "expiration-year": 2024
+              },
+              "amount": 339.15,
+              "processor-id": "CHECKOUTCOM_CARD",
+              "transaction-id": "pay_gmafzrh7zltupcvtunkfpv75ye",
+              "transaction-type": "CAPTURE",
+              "custom-attributes": {
+                "custom-attribute": [
+                  "act_qtxaszkr6u3utghesokv67rhvi",
+                  true,
+                  "Capture"
+                ]
+              }
+            }
+          ]
+        },
+        "notes": {
+          "note": [
+            {
+              "created-by": "storefront",
+              "creation-date": "2024-04-26T06:45:25.000Z",
+              "subject": "CKO Handle Authorization Request",
+              "text": "{\"source\":{\"type\":\"card\"},\"amount\":\"33915\",\"currency\":\"SAR\",\"capture\":true,\"customer\":{\"email\":\"amanimaash@hotmail.com\",\"name\":\"amani maash\"},\"3ds\":{\"enabled\":true},\"risk\":{\"enabled\":true},\"metadata\":{\"integration_data\":\"Checkout.com SFRA Cartridge - Version: 21.1.0\",\"platform_data\":\"Checkout.com SFRA Cartridge - Version: 21.1.0\",\"udf1\":\"mada\",\"payment_processor\":\"CHECKOUTCOM_CARD\"}}"
+            },
+            {
+              "created-by": "storefront",
+              "creation-date": "2024-04-26T06:45:25.000Z",
+              "subject": "CKO Handle Authorization Response",
+              "text": "{\"id\":\"pay_gmafzrh7zltupcvtunkfpv75ye\",\"reference\":\"SA00598906\",\"status\":\"Pending\"}"
+            },
+            {
+              "created-by": "storefront",
+              "creation-date": "2024-04-26T06:45:43.000Z",
+              "subject": "HandleReturn Verify Payment Service Request",
+              "text": "{\"requestUrl\":\"https://api.checkout.com/payments\",\"paymentToken\":\"sid_vbk6jddguubudmcezgjjnbbqka\"}"
+            },
+            {
+              "created-by": "storefront",
+              "creation-date": "2024-04-26T06:45:43.000Z",
+              "subject": "HandleReturn Verify Payment Service Response",
+              "text": "{\"id\":\"pay_gmafzrh7zltupcvtunkfpv75ye\",\"approved\":true,\"status\":\"Authorized\",\"amount\":33915,\"currency\":\"SAR\",\"balances\":{\"total_authorized\":33915,\"total_voided\":0,\"available_to_void\":33915,\"total_captured\":0,\"available_to_capture\":33915,\"total_refunded\":0,\"available_to_refund\":0},\"payment_type\":\"Regular\",\"reference\":\"SA00598906\",\"risk\":{\"flagged\":false,\"score\":0},\"actions\":{\"0\":{\"id\":\"act_7ouy7rd2bbhencjphh77tw2igm\",\"type\":\"Authorization\",\"response_code\":\"10000\",\"response_summary\":\"Approved\"}}}"
+            },
+            {
+              "created-by": "system",
+              "creation-date": "2024-04-26T06:55:01.493Z",
+              "subject": "CKO Feedback Authorization/Purchase Success, Payment status: NOTPAID, Export status: NOTEXPORTED",
+              "text": "{\"id\":\"evt_ixrgr3ey5mkujexqvr5bi3k2jq\",\"status\":\"payment_approved\",\"data\":{\"id\":\"pay_gmafzrh7zltupcvtunkfpv75ye\",\"action_id\":\"act_7ouy7rd2bbhencjphh77tw2igm\",\"reference\":\"SA00598906\",\"amount\":33915,\"currency\":\"SAR\",\"auth_code\":\"710772\",\"response_code\":\"10000\",\"response_summary\":\"Approved\",\"balances\":{\"total_authorized\":33915,\"total_voided\":0,\"available_to_void\":33915,\"total_captured\":0,\"available_to_capture\":33915,\"total_refunded\":0,\"available_to_refund\":0}}}"
+            },
+            {
+              "created-by": "system",
+              "creation-date": "2024-04-26T06:55:01.497Z",
+              "subject": "Webhook information",
+              "text": "cko.webhook.event: payment_approved\nTransaction ID: act_7ouy7rd2bbhencjphh77tw2igm\ncko.transaction.paymentId: pay_gmafzrh7zltupcvtunkfpv75ye\ncko.transaction.eventId: evt_ixrgr3ey5mkujexqvr5bi3k2jq\nResponse code: 10000"
+            },
+            {
+              "created-by": "system",
+              "creation-date": "2024-04-26T06:55:01.505Z",
+              "subject": "CKO Feedback Authorization/Purchase Success, Payment status: NOTPAID, Export status: NOTEXPORTED",
+              "text": "{\"id\":\"evt_3njus5q7adreppth6unfhl7cvq\",\"status\":\"payment_captured\",\"data\":{\"id\":\"pay_gmafzrh7zltupcvtunkfpv75ye\",\"action_id\":\"act_qtxaszkr6u3utghesokv67rhvi\",\"reference\":\"SA00598906\",\"amount\":33915,\"currency\":\"SAR\",\"auth_code\":\"\",\"response_code\":\"10000\",\"response_summary\":\"Approved\",\"balances\":{\"total_authorized\":33915,\"total_voided\":0,\"available_to_void\":0,\"total_captured\":33915,\"available_to_capture\":0,\"total_refunded\":0,\"available_to_refund\":33915}}}"
+            },
+            {
+              "created-by": "system",
+              "creation-date": "2024-04-26T06:55:01.611Z",
+              "subject": "Webhook information",
+              "text": "cko.webhook.event: payment_captured\nTransaction ID: act_qtxaszkr6u3utghesokv67rhvi\ncko.transaction.paymentId: pay_gmafzrh7zltupcvtunkfpv75ye\ncko.transaction.eventId: evt_3njus5q7adreppth6unfhl7cvq\nResponse code: 10000"
+            }
+          ]
+        },
+        "custom-attributes": {
+          "custom-attribute": [
+            false,
+            "ios",
+            "{\"securityCode\":\"905\",\"storedPaymentUUID\":\"75c5df719316bee0eff1824aec\",\"saveCard\":false,\"type\":\"Master Card\",\"customerNo\":\"00433922\",\"madaCard\":true}",
+            false,
+            20001
+          ]
+        }
+      }
+    }
+  }
