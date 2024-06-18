@@ -28,7 +28,7 @@ const getOrder = (data, orderData) => {
     currency: order.meta.currency.currency_code,
     "customer-locale": "ar-SA", // TODO
     taxation: "gross",
-    "invoice-no": 531500, // TODO
+    // "invoice-no": 531500, // TODO
     customer: getCustomer(data),
     status: getStatus(data),
     "channel-type": order.meta.order_platform,
@@ -37,14 +37,14 @@ const getOrder = (data, orderData) => {
       "product-lineitem": getProductLineItems(data, orderData),
     },
     "shipping-lineitems": {
-      "shipping-lineitem": [], // NO mappings in Fynd because they dont have shipping charges fields of mno
+      "shipping-lineitem": getShipmentLineItemDetails(data, orderData),
     },
     shipments: {
       shipment: shipmentListMapped,
     },
     totals: getTotalsOfOrder(data, orderData, shipmentListMapped),
     payments: {
-      payment: getPaymentArray(data),
+      payment: getPaymentArray(data, orderData),
     },
 
     notes: {
@@ -105,11 +105,11 @@ const getProductLineItems = (data, orderData) => {
         tax: itemDataFromApi.financial_breakup.gst_fee,
         "gross-price": itemDataFromApi.financial_breakup.price_effective,
         "base-price": itemDataFromApi.financial_breakup.price_effective,
-        "lineitem-text": `${item?.name}`,
+        "lineitem-text": `${item.item?.name}`,
         "tax-basis": itemDataFromApi.financial_breakup.price_effective,
         position: prdLinPosition,
-        "product-id": item?.id,
-        "product-name": `${item?.name}`,
+        "product-id": item.item?.id,
+        "product-name": `${item.item?.name}`,
         quantity: item?.quantity,
         "tax-rate": itemDataFromApi.financial_breakup.gst_tax_percentage / 100,
         "shipment-id": shipmentId,
@@ -158,7 +158,7 @@ const getShipments = (data, orderData) => {
       gift: false,
       totals: {
         "merchandize-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.value_of_good,
+          "net-price": shipmentLvlInfoFromApi.prices.price_effective,
           tax: `${
             shipmentLvlInfoFromApi.prices.price_effective -
             shipmentLvlInfoFromApi.prices.value_of_good
@@ -166,7 +166,7 @@ const getShipments = (data, orderData) => {
           "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
         },
         "adjusted-merchandize-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.value_of_good,
+          "net-price": shipmentLvlInfoFromApi.prices.price_effective,
           tax: `${
             shipmentLvlInfoFromApi.prices.price_effective -
             shipmentLvlInfoFromApi.prices.value_of_good
@@ -174,28 +174,54 @@ const getShipments = (data, orderData) => {
           "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
         },
         "shipping-total": {
-          "net-price": 0, // THESE VALUES FOR SHIPPING NOT PRESENT IN FYND
+          "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
           tax: 0,
-          "gross-price": 0,
+          "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
         },
         "adjusted-shipping-total": {
-          "net-price": 0,
+          "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
           tax: 0,
-          "gross-price": 0,
+          "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
         },
         "shipment-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.value_of_good,
+          "net-price": shipmentLvlInfoFromApi.prices.price_effective + shipmentLvlInfoFromApi.prices.delivery_charge,
           tax: `${
             shipmentLvlInfoFromApi.prices.price_effective -
             shipmentLvlInfoFromApi.prices.value_of_good
           }`,
-          "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
+          "gross-price": shipmentLvlInfoFromApi.prices.price_effective + shipmentLvlInfoFromApi.prices.delivery_charge,
         },
       },
     });
   });
 
   return shipListItems;
+};
+
+const getShipmentLineItemDetails = (data, orderData) => {
+  const order = data?.payload.order;
+  const shipmentListDetailItems = [];
+  let prdLinPosition = 1;
+  order.shipments.forEach((shipment) => {
+    // Shipment level
+    const shipmentId = shipment?.id;
+    const shipmentLvlInfoFromApi = orderData.shipments.find(
+      (e) => e.shipment_id == shipmentId
+    );
+    shipmentListDetailItems.push({
+      "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+      "tax": 0,
+      "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+      "base-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+      "lineitem-text": "Shipping",
+      "tax-basis": 0,
+      "item-id": "STANDARD_SHIPPING",
+      "shipment-id": shipmentId,
+      "tax-rate": 0
+  });
+  });
+
+  return shipmentListDetailItems;
 };
 
 const getTotalsOfOrder = (data, orderData, shipmentListMapped) => {
@@ -243,7 +269,6 @@ const getTotalsOfOrder = (data, orderData, shipmentListMapped) => {
         shipment.totals["merchandize-total"]["gross-price"],
     };
 
-    // // PRICE ADJUSTMENTS NOT CONSIDERED AS OF NOW
     totalMapped["adjusted-merchandize-total"] = {
       "net-price":
         totalMapped["adjusted-merchandize-total"]["net-price"] +
@@ -335,25 +360,23 @@ const getStatus = (data) => {
 };
 
 // TODO: complete this whole functiom
-const getPaymentArray = (data) => {
+const getPaymentArray = (data, orderData) => {
   const order = data?.payload?.order;
   let payments = [];
 
   for (paymentTypeKey in order.payment_methods) {
-    console.log("key == ", paymentTypeKey);
+    console.log("paymentTypeKey ====> ", paymentTypeKey);
     let obj = {
-      "credit-card": {
-        "card-type": "Master Card",
-        "card-number": "XXXX-XXXX-XXXX-2994",
-        "expiration-month": 9,
-        "expiration-year": 2024,
+      [paymentTypeKey]: {
+        "card-type": order.payment_methods[paymentTypeKey].name,
+        "card-number": "xxxxxxxxxxxx"
       },
-      amount: 339.15,
-      "processor-id": "CHECKOUTCOM_CARD",
-      "transaction-id": "pay_gmafzrh7zltupcvtunkfpv75ye",
+      amount: order.payment.price_breakup.order_value,
+      "processor-id": order.payment_methods[paymentTypeKey].meta.payment_identifier,
+      "transaction-id": order.payment_methods[paymentTypeKey].meta.payment_id,
       "transaction-type": "CAPTURE",
       "custom-attributes": {
-        "custom-attribute": ["act_qtxaszkr6u3utghesokv67rhvi", true, "Capture"],
+        "custom-attribute": [],
       },
     };
     payments.push(obj);
@@ -362,7 +385,7 @@ const getPaymentArray = (data) => {
   return payments;
 };
 
-exports.xmlcreator = async (jsonObj) => {
+exports.xmlProcessor = async (jsonObj) => {
   // Convert JSON to XML
   var options = { compact: true, ignoreComment: true, spaces: 4 };
   var xml = xmljs.json2xml(jsonObj, options);
@@ -372,7 +395,7 @@ exports.xmlcreator = async (jsonObj) => {
   // SEND TO S3 Bucket
   const params = {
     Bucket: process.env.SYNC_BUCKET_NAME,
-    Key: `OrderExports/${jsonObj["orders"]["order"][0]["original-order-no"]}.xml`,
+    Key: `OrderExports/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}.xml`,
     Body: xml,
     ContentType: "application/xml",
   };

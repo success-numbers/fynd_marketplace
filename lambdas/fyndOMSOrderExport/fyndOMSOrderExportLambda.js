@@ -13,7 +13,7 @@ exports.handler = async (event) => {
             const transformedOrder = util.orderTransformer(recordBody,getOrderDetails);
             console.log("TRANSFORMED ORDER JSON", JSON.stringify(transformedOrder));
             // XML conversion & Send to S3 bucket
-            const mappedOrderXML = await util.xmlcreator(transformedOrder);
+            await util.xmlProcessor(transformedOrder);
         
           }));
     } catch (e) {
