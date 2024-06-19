@@ -4,14 +4,12 @@ const xmljs = require("xml-js");
 const s3 = new AWS.S3();
 
 exports.orderTransformer = (orderPayload, orderData) => {
-  let orders = [
-    getOrder(orderPayload, orderData), 
-  ];
+  let orders = [getOrder(orderPayload, orderData)];
   const finalPayload = {
     orders: {
       order: orders,
     },
-  }
+  };
   console.log(finalPayload);
 
   return finalPayload;
@@ -21,14 +19,16 @@ const getOrder = (data, orderData) => {
   const event = data?.event;
   const order = data?.payload.order;
   const shipmentListMapped = getShipments(data, orderData);
+  const orderDate = new Date(event?.created_timestamp);
+
   return {
-    "order-date": event?.created_timestamp,
+    "order-date": orderDate.toISOString(),
     "created-by": "storefront",
     "original-order-no": order.order_id,
     currency: order.meta.currency.currency_code,
     "customer-locale": "ar-SA", // TODO
     taxation: "gross",
-    // "invoice-no": 531500, // TODO
+    "invoice-no": order.order_id,
     customer: getCustomer(data),
     status: getStatus(data),
     "channel-type": order.meta.order_platform,
@@ -47,13 +47,13 @@ const getOrder = (data, orderData) => {
       payment: getPaymentArray(data, orderData),
     },
 
-    notes: {
-      note: [],
-    },
-    "custom-attributes": {
-      // TODO
-      "custom-attribute": [], // TODO
-    },
+    // notes: {
+    //   note: [],
+    // },
+    // "custom-attributes": {
+    //   // TODO
+    //   "custom-attribute": [], // TODO
+    // },
   };
 };
 
@@ -66,17 +66,14 @@ const getCustomer = (data) => {
   let customer = {
     guest: isguest,
   };
-
-  if (!isguest) {
-    customer = {
-      ...customer,
-      "customer-no": 433922, // TODO
-      "customer-name": "amani maash", // TODO
-      "customer-email": "amanimaash@hotmail.com", // TODO
-      "billing-address": getBillingAddress(data), // TODO
-    };
-  }
-
+  const billAddr = order.shipments[0].billing_address_json;
+  customer = {
+    ...customer,
+    // "customer-no": 433922, // TODO
+    "customer-name": billAddr["first-name"],
+    "customer-email": billAddr?.email ?? "",
+    "billing-address": getBillingAddress(data),
+  };
   return customer;
 };
 
@@ -114,9 +111,9 @@ const getProductLineItems = (data, orderData) => {
         "tax-rate": itemDataFromApi.financial_breakup.gst_tax_percentage / 100,
         "shipment-id": shipmentId,
         gift: item?.article_json?.is_gift ?? false,
-        "custom-attributes": {
-          "custom-attribute": [],
-        },
+        // "custom-attributes": {
+        //   "custom-attribute": [],
+        // },
       });
       prdLinPosition++;
     });
@@ -135,7 +132,15 @@ const getShipments = (data, orderData) => {
     const shipmentLvlInfoFromApi = orderData.shipments.find(
       (e) => e.shipment_id == shipmentId
     );
+    const priceEffective = shipmentLvlInfoFromApi.prices?.price_effective ?? 0;
+    const valueOfGood = shipmentLvlInfoFromApi.prices?.value_of_good ?? 0;
+    const adjustedMerchTax =
+      Math.floor((priceEffective - valueOfGood) * 100) / 100;
+
     shipListItems.push({
+      "@attr": {
+        "shipment-id": shipmentId
+      },
       status: {
         "shipping-status": "NOT_SHIPPED",
       },
@@ -151,26 +156,20 @@ const getShipments = (data, orderData) => {
           " " +
           shipment.delivery_address_json.phone
         }`,
-        "custom-attributes": {
-          "custom-attribute": [],
-        },
+        // "custom-attributes": {
+        //   "custom-attribute": [],
+        // },
       },
       gift: false,
       totals: {
         "merchandize-total": {
           "net-price": shipmentLvlInfoFromApi.prices.price_effective,
-          tax: `${
-            shipmentLvlInfoFromApi.prices.price_effective -
-            shipmentLvlInfoFromApi.prices.value_of_good
-          }`,
+          tax: adjustedMerchTax,
           "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
         },
         "adjusted-merchandize-total": {
           "net-price": shipmentLvlInfoFromApi.prices.price_effective,
-          tax: `${
-            shipmentLvlInfoFromApi.prices.price_effective -
-            shipmentLvlInfoFromApi.prices.value_of_good
-          }`,
+          tax: adjustedMerchTax,
           "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
         },
         "shipping-total": {
@@ -184,12 +183,13 @@ const getShipments = (data, orderData) => {
           "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
         },
         "shipment-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.price_effective + shipmentLvlInfoFromApi.prices.delivery_charge,
-          tax: `${
-            shipmentLvlInfoFromApi.prices.price_effective -
-            shipmentLvlInfoFromApi.prices.value_of_good
-          }`,
-          "gross-price": shipmentLvlInfoFromApi.prices.price_effective + shipmentLvlInfoFromApi.prices.delivery_charge,
+          "net-price":
+            shipmentLvlInfoFromApi.prices.price_effective +
+            shipmentLvlInfoFromApi.prices.delivery_charge,
+          tax: adjustedMerchTax,
+          "gross-price":
+            shipmentLvlInfoFromApi.prices.price_effective +
+            shipmentLvlInfoFromApi.prices.delivery_charge,
         },
       },
     });
@@ -210,15 +210,15 @@ const getShipmentLineItemDetails = (data, orderData) => {
     );
     shipmentListDetailItems.push({
       "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
-      "tax": 0,
+      tax: 0,
       "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
       "base-price": shipmentLvlInfoFromApi.prices.delivery_charge,
       "lineitem-text": "Shipping",
       "tax-basis": 0,
       "item-id": "STANDARD_SHIPPING",
       "shipment-id": shipmentId,
-      "tax-rate": 0
-  });
+      "tax-rate": 0,
+    });
   });
 
   return shipmentListDetailItems;
@@ -258,67 +258,87 @@ const getTotalsOfOrder = (data, orderData, shipmentListMapped) => {
   };
   shipmentListMapped.forEach((shipment) => {
     totalMapped["merchandize-total"] = {
-      "net-price":
+      "net-price": getFloatFormatter(
         totalMapped["merchandize-total"]["net-price"] +
-        shipment["totals"]["merchandize-total"]["net-price"],
-      tax:
+          shipment["totals"]["merchandize-total"]["net-price"]
+      ),
+      tax: getFloatFormatter(
         totalMapped["merchandize-total"]["tax"] +
-        shipment.totals["merchandize-total"]["tax"],
-      "gross-price":
+          shipment.totals["merchandize-total"]["tax"]
+      ),
+      "gross-price": getFloatFormatter(
         totalMapped["merchandize-total"]["gross-price"] +
-        shipment.totals["merchandize-total"]["gross-price"],
+          shipment.totals["merchandize-total"]["gross-price"]
+      ),
     };
 
     totalMapped["adjusted-merchandize-total"] = {
-      "net-price":
+      "net-price": getFloatFormatter(
         totalMapped["adjusted-merchandize-total"]["net-price"] +
-        shipment["totals"]["adjusted-merchandize-total"]["net-price"],
-      tax:
+          shipment["totals"]["adjusted-merchandize-total"]["net-price"]
+      ),
+      tax: getFloatFormatter(
         totalMapped["adjusted-merchandize-total"]["tax"] +
-        shipment["totals"]["adjusted-merchandize-total"]["tax"],
-      "gross-price":
+          shipment["totals"]["adjusted-merchandize-total"]["tax"]
+      ),
+      "gross-price": getFloatFormatter(
         totalMapped["adjusted-merchandize-total"]["gross-price"] +
-        shipment.totals["adjusted-merchandize-total"]["gross-price"],
+          shipment.totals["adjusted-merchandize-total"]["gross-price"]
+      ),
     };
 
     totalMapped["shipping-total"] = {
-      "net-price":
+      "net-price": getFloatFormatter(
         totalMapped["shipping-total"]["net-price"] +
-        shipment["totals"]["shipping-total"]["net-price"],
-      tax:
+          shipment["totals"]["shipping-total"]["net-price"]
+      ),
+      tax: getFloatFormatter(
         totalMapped["shipping-total"]["tax"] +
-        shipment["totals"]["shipping-total"]["tax"],
-      "gross-price":
+          shipment["totals"]["shipping-total"]["tax"]
+      ),
+      "gross-price": getFloatFormatter(
         totalMapped["shipping-total"]["gross-price"] +
-        shipment["totals"]["shipping-total"]["gross-price"],
+          shipment["totals"]["shipping-total"]["gross-price"]
+      ),
     };
 
     totalMapped["adjusted-shipping-total"] = {
-      "net-price":
+      "net-price": getFloatFormatter(
         totalMapped["adjusted-shipping-total"]["net-price"] +
-        shipment["totals"]["adjusted-shipping-total"]["net-price"],
-      tax:
+          shipment["totals"]["adjusted-shipping-total"]["net-price"]
+      ),
+      tax: getFloatFormatter(
         totalMapped["adjusted-shipping-total"]["tax"] +
-        shipment["totals"]["adjusted-shipping-total"]["tax"],
-      "gross-price":
+          shipment["totals"]["adjusted-shipping-total"]["tax"]
+      ),
+      "gross-price": getFloatFormatter(
         totalMapped["adjusted-shipping-total"]["gross-price"] +
-        shipment["totals"]["adjusted-shipping-total"]["gross-price"],
+          shipment["totals"]["adjusted-shipping-total"]["gross-price"]
+      ),
     };
 
     totalMapped["order-total"] = {
-      "net-price":
+      "net-price": getFloatFormatter(
         totalMapped["adjusted-merchandize-total"]["net-price"] +
-        totalMapped["shipping-total"]["net-price"],
-      tax:
+          totalMapped["shipping-total"]["net-price"]
+      ),
+      tax: getFloatFormatter(
         totalMapped["adjusted-merchandize-total"]["tax"] +
-        totalMapped["shipping-total"]["tax"],
-      "gross-price":
+          totalMapped["shipping-total"]["tax"]
+      ),
+      "gross-price": getFloatFormatter(
         totalMapped["adjusted-merchandize-total"]["gross-price"] +
-        totalMapped["shipping-total"]["gross-price"],
+          totalMapped["shipping-total"]["gross-price"]
+      ),
     };
   });
 
   return totalMapped;
+};
+
+const getFloatFormatter = (x) => {
+  const formatted = Math.floor(x * 100) / 100;
+  return formatted;
 };
 
 const getBillingAddress = (data) => {
@@ -334,9 +354,9 @@ const getBillingAddress = (data) => {
     city: billAddr.city,
     "country-code": billAddr.country_code,
     phone: billAddr.phone,
-    "custom-attributes": {
-      "custom-attribute": [],
-    },
+    // "custom-attributes": {
+    //   "custom-attribute": [],
+    // },
   };
 };
 
@@ -367,17 +387,17 @@ const getPaymentArray = (data, orderData) => {
   for (paymentTypeKey in order.payment_methods) {
     console.log("paymentTypeKey ====> ", paymentTypeKey);
     let obj = {
-      [paymentTypeKey]: {
-        "card-type": order.payment_methods[paymentTypeKey].name,
-        "card-number": "xxxxxxxxxxxx"
+      "custom-method": {
+        "method-name": order.payment_methods[paymentTypeKey].name,
       },
       amount: order.payment.price_breakup.order_value,
-      "processor-id": order.payment_methods[paymentTypeKey].meta.payment_identifier,
+      "processor-id":
+        order.payment_methods[paymentTypeKey].meta.payment_identifier,
       "transaction-id": order.payment_methods[paymentTypeKey].meta.payment_id,
       "transaction-type": "CAPTURE",
-      "custom-attributes": {
-        "custom-attribute": [],
-      },
+      // "custom-attributes": {
+      //   "custom-attribute": [],
+      // },
     };
     payments.push(obj);
   }
