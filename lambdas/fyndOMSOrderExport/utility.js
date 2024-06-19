@@ -76,7 +76,7 @@ const getCustomer = (data) => {
   customer = {
     ...customer,
     // "customer-no": 433922, // TODO
-    "customer-name": billAddr["first-name"],
+    "customer-name": billAddr["name"],
     "customer-email": billAddr?.email ?? "",
     "billing-address": getBillingAddress(data),
   };
@@ -347,14 +347,37 @@ const getFloatFormatter = (x) => {
   return formatted;
 };
 
+const getFirstAndLastName = (data) => {
+  data = data.trim()
+  const parts = data.split(' ');
+
+  let firstName = '';
+  let lastName = '';
+
+  if (parts.length === 1) {
+      firstName = parts[0];
+      lastName = '';
+  } else if (parts.length === 2) {
+      firstName = parts[0];
+      lastName = parts[1];
+  } else {
+      firstName = parts.slice(0, parts.length - 1).join(' ');
+      lastName = parts[parts.length - 1];
+  }
+
+  return { firstName, lastName };
+};
+
 const getBillingAddress = (data) => {
   const event = data?.event;
   const order = data?.payload.order;
   const billAddr = order.shipments[0].billing_address_json;
 
+  const { firstName, lastName } = getFirstAndLastName(billAddr.name)
+
   return {
-    "first-name": billAddr.name,
-    "last-name": "",
+    "first-name": firstName,
+    "last-name": lastName,
     address1: billAddr.address1,
     address2: billAddr.address2,
     city: billAddr.city,
@@ -421,7 +444,7 @@ exports.xmlProcessor = async (jsonObj) => {
   // SEND TO S3 Bucket
   const params = {
     Bucket: process.env.SYNC_BUCKET_NAME,
-    Key: `OrderExports/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}.xml`,
+    Key: `OrderExports/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}_${ Date.now() }.xml`,
     Body: xml,
     ContentType: "application/xml",
   };
