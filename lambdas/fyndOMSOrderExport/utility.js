@@ -4,10 +4,16 @@ const xmljs = require("xml-js");
 const s3 = new AWS.S3();
 
 exports.orderTransformer = (orderPayload, orderData) => {
-  let orders = [getOrder(orderPayload, orderData)];
+  let data = getOrder(orderPayload, orderData);
+  let ordersData = [{
+    _attributes: {
+      'order-no': data['original-order-no']
+    },
+    ...data,
+  }]
   const finalPayload = {
     orders: {
-      order: orders,
+      order: ordersData,
     },
   };
   console.log(finalPayload);
@@ -138,8 +144,8 @@ const getShipments = (data, orderData) => {
       Math.floor((priceEffective - valueOfGood) * 100) / 100;
 
     shipListItems.push({
-      "@attr": {
-        "shipment-id": shipmentId
+      _attributes: {
+        'shipment-id': shipmentId
       },
       status: {
         "shipping-status": "NOT_SHIPPED",
