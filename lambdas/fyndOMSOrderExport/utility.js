@@ -444,7 +444,7 @@ exports.xmlProcessor = async (jsonObj) => {
   // SEND TO S3 Bucket
   const params = {
     Bucket: process.env.SYNC_BUCKET_NAME,
-    Key: `OrderExports/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}_${ Date.now() }.xml`,
+    Key: `OrderExports/NewOrders/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}_${ Date.now() }.xml`,
     Body: xml,
     ContentType: "application/xml",
   };
