@@ -6,7 +6,7 @@ exports.handler = async (event) => {
         console.log("Incoming fyndOMSOrderUpdatesLambda payload", JSON.stringify(event));
         
         await Promise.all(event.Records.map(async (record) => {
-            const recordBody = JSON.parse(JSON.parse(record.body || '{}'));
+            const recordBody = JSON.parse(record.body || '{}');
             console.log("Record Body", recordBody);
             // const getFyndAuthToken = await util.authorisationToken();
             // const orderId= recordBody.payload.order.order_id;

@@ -3,22 +3,28 @@ const sqs = new AWS.SQS({ region: process.env.REGION });
 
 exports.handler = async (event) => {
     try {
-        const data = JSON.parse(event.body)
-        console.log('event.body ====> ', data)
+        const data = JSON.parse(event.body);
+        console.log('event.body ====> ', data);
 
-        let params = {
-            MessageBody: JSON.stringify(data),
-        };
+        const { name, type } = data.event;
 
-        if (data.event.name === 'order' && data.event.type === 'placed') {
-            params.QueueUrl = process.env.fyndOrderExportSQS
+        let queueUrl;
+        if (name === 'order' && type === 'placed') {
+            queueUrl = process.env.fyndOrderExportSQS;
+        } else if (name === 'shipment' && type === 'update') {
+            queueUrl = process.env.fyndOrderUpdatesSQS;
         } else {
-            params.QueueUrl = process.env.fyndOrderUpdatesSQS
+            throw new Error('Invalid event.name and event.type');
         }
 
-        console.log('SQS params = ', params)
+        const params = {
+            MessageBody: JSON.stringify(data),
+            QueueUrl: queueUrl,
+        };
+        console.log('SQS params = ', params);
+        
         await sqs.sendMessage(params).promise();
-        console.log("Event message sent to SQS (fyndOrderExportSQS) successfully", params);
+        console.log("Event message sent to SQS successfully", params);
 
         return {
             statusCode: 200,

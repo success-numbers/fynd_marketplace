@@ -4,9 +4,9 @@ const util = require('./utility')
 exports.handler = async (event) => {
     try {
         console.log("Incoming fyndOMSOrderExportLambda payload", JSON.stringify(event));
-        
+
         await Promise.all(event.Records.map(async (record) => {
-            const recordBody = JSON.parse(JSON.parse(record.body || '{}'));
+            const recordBody = JSON.parse(record.body || '{}');
             console.log("Record Body", recordBody);
             
             const getFyndAuthToken = await util.authorisationToken();
