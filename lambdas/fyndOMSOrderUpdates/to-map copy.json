@@ -1,0 +1,316 @@
+{
+	"orders": {
+		"order": {
+			"order-date": "2023-06-17T19:13:42.000Z",
+			"created-by": "storefront",
+			"original-order-no": "SA00484808",
+			"currency": "SAR",
+			"customer-locale": "ar_SA",
+			"taxation": "gross",
+			"invoice-no": "00456869",
+			"customer": {
+				"guest": "true",
+				"customer-name": "aisha alharbi",
+				"customer-email": "jocvud@gmail.com",
+				"billing-address": {
+					"first-name": "aisha",
+					"last-name": "alharbi",
+					"address1": "?????? ?????",
+					"city": "Safwa",
+					"country-code": "SA",
+					"phone": "+966 556664527",
+					"custom-attributes": {
+						"custom-attribute": [
+							{
+								"_attribute-id": "district",
+								"__text": "?? ??????"
+							},
+							{
+								"_attribute-id": "email",
+								"__text": "jocvud@gmail.com"
+							}
+						]
+					}
+				}
+			},
+			"status": {
+				"order-status": "CANCELLED",
+				"shipping-status": "NOT_SHIPPED",
+				"confirmation-status": "CONFIRMED",
+				"payment-status": "PAID"
+			},
+			"channel-type": "Storefront",
+			"current-order-no": "SA00484808",
+			"product-lineitems": {
+				"product-lineitem": [
+					{
+						"net-price": "233.91",
+						"tax": "35.09",
+						"gross-price": "269.00",
+						"base-price": "269.00",
+						"lineitem-text": "??? ???? ??????",
+						"tax-basis": "269.00",
+						"position": "1",
+						"product-id": "100102678",
+						"product-name": "??? ???? ??????",
+						"quantity": {
+							"_unit": "EA",
+							"__text": "1.0"
+						},
+						"tax-rate": "0.15",
+						"shipment-id": "00359996",
+						"gift": "false",
+						"custom-attributes": {
+							"custom-attribute": [
+								{
+									"_attribute-id": "invoiceAmt",
+									"__text": "134.5"
+								},
+								{
+									"value": "0",
+									"_attribute-id": "proratedGroups"
+								},
+								{
+									"_attribute-id": "proratedPrice",
+									"__text": "134.5"
+								}
+							]
+						},
+						"price-adjustments": {
+							"price-adjustment": {
+								"net-price": "-116.96",
+								"tax": "-17.54",
+								"gross-price": "-134.50",
+								"base-price": "-134.50",
+								"lineitem-text": "Cash-Back-June-2023",
+								"tax-basis": "-134.50",
+								"promotion-id": "Cash-Back-June-2023",
+								"campaign-id": "Cash-Back-June",
+								"discount": {
+									"percentage": "50"
+								}
+							}
+						}
+					},
+					{
+						"net-price": "233.91",
+						"tax": "35.09",
+						"gross-price": "269.00",
+						"base-price": "269.00",
+						"lineitem-text": "??? ???? ??????",
+						"tax-basis": "269.00",
+						"position": "2",
+						"product-id": "100102676",
+						"product-name": "??? ???? ??????",
+						"quantity": {
+							"_unit": "EA",
+							"__text": "1.0"
+						},
+						"tax-rate": "0.15",
+						"shipment-id": "00359996",
+						"gift": "false",
+						"custom-attributes": {
+							"custom-attribute": [
+								{
+									"_attribute-id": "invoiceAmt",
+									"__text": "134.5"
+								},
+								{
+									"value": "1",
+									"_attribute-id": "proratedGroups"
+								},
+								{
+									"_attribute-id": "proratedPrice",
+									"__text": "134.5"
+								}
+							]
+						},
+						"price-adjustments": {
+							"price-adjustment": {
+								"net-price": "-116.96",
+								"tax": "-17.54",
+								"gross-price": "-134.50",
+								"base-price": "-134.50",
+								"lineitem-text": "Cash-Back-June-2023",
+								"tax-basis": "-134.50",
+								"promotion-id": "Cash-Back-June-2023",
+								"campaign-id": "Cash-Back-June",
+								"discount": {
+									"percentage": "50"
+								}
+							}
+						}
+					}
+				]
+			},
+			"shipping-lineitems": {
+				"shipping-lineitem": {
+					"net-price": "0.00",
+					"tax": "0.00",
+					"gross-price": "0.00",
+					"base-price": "0.00",
+					"lineitem-text": "Shipping",
+					"tax-basis": "0.00",
+					"item-id": "STANDARD_SHIPPING",
+					"shipment-id": "00359996",
+					"tax-rate": "0.15"
+				}
+			},
+			"shipments": {
+				"shipment": {
+					"status": {
+						"shipping-status": "NOT_SHIPPED"
+					},
+					"shipping-method": "001",
+					"shipping-address": {
+						"first-name": "aisha",
+						"last-name": "alharbi",
+						"address1": "?????? ?????",
+						"city": "Safwa",
+						"country-code": "SA",
+						"phone": "+966 556664527",
+						"custom-attributes": {
+							"custom-attribute": [
+								{
+									"_attribute-id": "district",
+									"__text": "?? ??????"
+								},
+								{
+									"_attribute-id": "email",
+									"__text": "jocvud@gmail.com"
+								}
+							]
+						}
+					},
+					"gift": "false",
+					"totals": {
+						"merchandize-total": {
+							"net-price": "467.82",
+							"tax": "70.18",
+							"gross-price": "538.00"
+						},
+						"adjusted-merchandize-total": {
+							"net-price": "233.90",
+							"tax": "35.10",
+							"gross-price": "269.00"
+						},
+						"shipping-total": {
+							"net-price": "0.00",
+							"tax": "0.00",
+							"gross-price": "0.00"
+						},
+						"adjusted-shipping-total": {
+							"net-price": "0.00",
+							"tax": "0.00",
+							"gross-price": "0.00"
+						},
+						"shipment-total": {
+							"net-price": "233.90",
+							"tax": "35.10",
+							"gross-price": "269.00"
+						}
+					},
+					"_shipment-id": "00359996"
+				}
+			},
+			"totals": {
+				"merchandize-total": {
+					"net-price": "467.82",
+					"tax": "70.18",
+					"gross-price": "538.00"
+				},
+				"adjusted-merchandize-total": {
+					"net-price": "233.90",
+					"tax": "35.10",
+					"gross-price": "269.00"
+				},
+				"shipping-total": {
+					"net-price": "0.00",
+					"tax": "0.00",
+					"gross-price": "0.00"
+				},
+				"adjusted-shipping-total": {
+					"net-price": "0.00",
+					"tax": "0.00",
+					"gross-price": "0.00"
+				},
+				"order-total": {
+					"net-price": "233.90",
+					"tax": "35.10",
+					"gross-price": "269.00"
+				}
+			},
+			"payments": {
+				"payment": {
+					"custom-method": {
+						"method-name": "TABBY_INSTALLMENTS"
+					},
+					"amount": "269.00",
+					"processor-id": "TABBY",
+					"transaction-id": "e8ddc78a-d883-4727-9290-69324c83c778"
+				}
+			},
+			"notes": {
+				"note": [
+					{
+						"created-by": "storefront",
+						"creation-date": "2023-06-17T19:13:43.000Z",
+						"subject": "Tabby Create Session Request",
+						"text": "{\"payment\":{\"amount\":\"269\",\"currency\":\"SAR\",\"description\":\"SA00484808\",\"buyer\":{\"email\":\"jocvud@gmail.com\",\"phone\":\"+966 556664527\",\"name\":\"aisha alharbi\"},\"order\":{\"tax_amount\":\"35.1\",\"shipping_amount\":\"0\",\"reference_id\":\"SA00484808\",\"discount_amount\":\"269\"},\"shipping_address\":{\"city\":\"Safwa\",\"address\":\"?????? ????? null\",\"zip\":null}}}"
+					},
+					{
+						"created-by": "storefront",
+						"creation-date": "2023-06-17T19:13:43.000Z",
+						"subject": "Tabby Create Session Response",
+						"text": "{\"id\":\"a07532b6-854a-4c47-a078-69904ddde692\",\"warnings\":null,\"configuration\":{\"currency\":\"SAR\",\"app_type\":\"one_click\",\"new_customer\":false,\"available_limit\":null,\"min_limit\":null,\"available_products\":{\"installments\":{\"0\":{\"downpayment\":\"67.25\",\"downpayment_percent\":\"25\",\"downpayment_increased_reason\":null,\"amount_to_pay\":\"201.75\",\"downpayment_total\":\"67.25\",\"order_amount\":\"269.00\",\"next_payment_date\":\"2023-07-17T00:00:00Z\",\"installments\":{\"0\":{\"due_date\":\"2023-07-17\",\"amount\":\"67.25\",\"principal\":\"67.25\",\"service_fee\":\"0.00\"},\"1\":{\"due_date\":\"2023-08-17\",\"amount\":\"67.25\",\"principal\":\"67.25\",\"service_fee\":\"0.00\"},\"2\":{\"due_date\":\"2023-09-17\",\"amount\":\"67.25\",\"principal\":\"67.25\",\"service_fee\":\"0.00\"}},\"pay_after_delivery\":false,\"pay_per_installment\":\"67.25\",\"web_url\":\"https://checkout.tabby.ai/?sessionId=a07532b6-854a-4c47-a078-69904ddde692&apiKey=pk_6622bd14-4b8c-4238-be77-ff9946c0b9c9&product=installments&merchantCode=niceweb1\",\"qr_code\":\"https://api.tabby.ai/api/v2/checkout/a07532b6-85"
+					},
+					{
+						"created-by": "system",
+						"creation-date": "2023-06-17T19:20:01.000Z",
+						"subject": "Tabby Feedback Authorization/Purchase Success, Order status: Failed",
+						"text": "{\"id\":\"e8ddc78a-d883-4727-9290-69324c83c778\",\"customer_id\":\"616ac5fa-06ab-4d42-a154-821586d6d0c9\",\"merchant_id\":\"m_be483749-ac77-453c-81b2-88ae34bd9390\",\"created_at\":\"2023-06-17T19:13:43Z\",\"expires_at\":\"2024-06-16T19:14:31Z\",\"closed_at\":null,\"status\":\"authorized\",\"is_test\":false,\"is_expired\":false,\"amount\":\"269.00\",\"currency\":\"SAR\",\"description\":\"SA00484808\",\"buyer\":{\"name\":\"aisha alharbi\",\"email\":\"jocvud@gmail.com\",\"phone\":\"+966556664527\",\"dob\":null},\"shipping_address\":{\"city\":\"Safwa\",\"address\":\"?????? ????? null\",\"zip\":\"\"},\"order\":{\"reference_id\":\"SA00484808\",\"updated_at\":\"0001-01-01T00:00:00Z\",\"tax_amount\":\"35.1\",\"shipping_amount\":\"0\",\"discount_amount\":\"269\",\"items\":[{\"reference_id\":\"100102678\",\"title\":\"??? ???? ??????\",\"description\":\"\",\"quantity\":1,\"unit_price\":\"269\",\"image_url\":\"\",\"product_url\":\"https://www.nice.com.sa/ar/buy/plastic-vaccum-flask-set-100102678.html\",\"category\":\"C166\",\"size\":\"1\",\"size_type\":\"\",\"brand\":\"Generic\"},{\"reference_id\":\"100102676\",\"title\":\"??? ???? ??????\""
+					},
+					{
+						"created-by": "bertan",
+						"creation-date": "2023-07-03T09:32:50.953Z",
+						"subject": "Tabby Capture Payment Request",
+						"text": "{\"amount\":\"269\"}"
+					},
+					{
+						"created-by": "bertan",
+						"creation-date": "2023-07-03T09:32:51.157Z",
+						"subject": "Tabby Capture Payment Response",
+						"text": "{\"id\":\"e8ddc78a-d883-4727-9290-69324c83c778\",\"created_at\":\"2023-06-17T19:13:43Z\",\"expires_at\":\"2024-06-16T19:14:31Z\",\"test\":false,\"is_expired\":false,\"status\":\"CLOSED\",\"cancelable\":false,\"currency\":\"SAR\",\"amount\":\"269\",\"description\":\"SA00484808\",\"buyer\":{\"id\":\"\",\"name\":\"aisha alharbi\",\"email\":\"jocvud@gmail.com\",\"phone\":\"+966556664527\",\"dob\":null},\"product\":{\"type\":\"installments\",\"installments_count\":3,\"installment_period\":\"P1M\"},\"shipping_address\":{\"city\":\"Safwa\",\"address\":\"?????? ????? null\",\"zip\":\"\"},\"order\":{\"reference_id\":\"SA00484808\",\"updated_at\":\"0001-01-01T00:00:00Z\",\"tax_amount\":\"35.1\",\"shipping_amount\":\"0\",\"discount_amount\":\"269\"},\"captures\":{\"0\":{\"id\":\"d38ba8bf-0342-4d5f-8128-4fef73eee896\",\"created_at\":\"2023-07-03T09:32:51Z\",\"amount\":\"269\",\"tax_amount\":\"0\",\"shipping_amount\":\"0\",\"discount_amount\":\"0\"}},\"refunds\":{},\"meta\":null}"
+					}
+				]
+			},
+			"custom-attributes": {
+				"custom-attribute": [
+					{
+						"_attribute-id": "channel",
+						"__text": "ios"
+					},
+					{
+						"_attribute-id": "reviewReminderSent",
+						"__text": "false"
+					},
+					{
+						"_attribute-id": "storeNo",
+						"__text": "20001"
+					},
+					{
+						"_attribute-id": "tabbyPaymentID",
+						"__text": "e8ddc78a-d883-4727-9290-69324c83c778"
+					},
+					{
+						"_attribute-id": "tabbyPaymentStatus",
+						"__text": "CLOSED"
+					}
+				]
+			},
+			"_order-no": "SA00484808"
+		},
+		"_xmlns": "http://www.demandware.com/xml/impex/order/2006-10-31",
+		"_version": "20.6"
+	}
+}

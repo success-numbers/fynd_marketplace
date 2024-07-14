@@ -6,16 +6,14 @@ exports.handler = async (event) => {
         console.log("Incoming fyndOMSOrderUpdatesLambda payload", JSON.stringify(event));
         
         await Promise.all(event.Records.map(async (record) => {
-            const recordBody = JSON.parse(record.body || '{}');
-            console.log("Record Body", recordBody);
-            // const getFyndAuthToken = await util.authorisationToken();
-            // const orderId= recordBody.payload.order.order_id;
-            // const getOrderDetails = await util.getOrderById(orderId, getFyndAuthToken);
-            // const transformedOrder = util.orderTransformer(recordBody,getOrderDetails);
-            // console.log("TRANSFORMED ORDER JSON", JSON.stringify(transformedOrder));
-            // // XML conversion & Send to S3 bucket
-            // await util.xmlProcessor(transformedOrder);
-        
+            console.log("MEOW RECORD", record)
+            const recordBody = JSON.parse(record.body);
+            console.log("Record Body", JSON.stringify(recordBody));
+            const getFyndAuthToken = await util.authorisationToken();
+            console.log("MEOW getFyndAuthToken",getFyndAuthToken)
+            const  { transformedPayload, s3Path } = await util.statusFlowConsumer(recordBody, getFyndAuthToken)
+            console.log("MEOW TRANSFORMED ORDER", JSON.stringify(transformedPayload))
+            await util.xmlProcessor(transformedPayload, s3Path);
           }));
     } catch (e) {
         console.error('Error in fyndOMSOrderUpdates Lambda:', e.toString());

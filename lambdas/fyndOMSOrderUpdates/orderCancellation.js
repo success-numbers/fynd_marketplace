@@ -1,41 +1,18 @@
 const AWS = require("aws-sdk");
 const axios = require("axios");
 const xmljs = require("xml-js");
-const { orderCancellation } = require("./orderCancellation");
-const orderReturnTransformer = require("./return/index");
-
 const s3 = new AWS.S3();
 
-exports.statusFlowConsumer = async (eventPayload, fyndAuthToken) => {
-  console.log("MEOW EVENTPAYLOAD",eventPayload.payload)
-  const shipmentStatus = eventPayload.payload.shipment.status;
-  const orderId = eventPayload.payload.shipment.order_id;
-  console.log("MEOW ORDER DATA", shipmentStatus, orderId)
-
-  switch(shipmentStatus){
-    case 'cancelled_fynd': {
-      const getOrderData = await this.getOrderById(orderId, fyndAuthToken)
-      // console.log("MEOW ORDER DATA", JSON.stringify(getOrderData))
-      const transformedOrder = orderCancellation(eventPayload, getOrderData)
-      return { transformedPayload: transformedOrder, s3Path: ''};
-    }
-    case 'return_initiated' : {
-      const transformedPayload = orderReturnTransformer(eventPayload)
-      return { transformedPayload: transformedOrder, s3Path: ''};
-    }
-    default: break;
-  }
-}
-
-
-exports.orderTransformer = (orderPayload, orderData) => {
+exports.orderCancellation = (orderPayload, orderData) => {
   let data = getOrder(orderPayload, orderData);
-  let ordersData = [{
-    _attributes: {
-      'order-no': data['original-order-no']
+  let ordersData = [
+    {
+      _attributes: {
+        "order-no": data["original-order-no"],
+      },
+      ...data,
     },
-    ...data,
-  }]
+  ];
   const finalPayload = {
     orders: {
       order: ordersData,
@@ -48,22 +25,22 @@ exports.orderTransformer = (orderPayload, orderData) => {
 
 const getOrder = (data, orderData) => {
   const event = data?.event;
-  const order = data?.payload.order;
+  const order = orderData?.order;
   const shipmentListMapped = getShipments(data, orderData);
   const orderDate = new Date(event?.created_timestamp);
-
+  const allShipmentUtilMapList = getFullShipments(data, orderData);
   return {
     "order-date": orderDate.toISOString(),
     "created-by": "storefront",
-    "original-order-no": order.order_id,
-    currency: order.meta.currency.currency_code,
+    "original-order-no": orderData.order.fynd_order_id,
+    "currency": orderData.order.meta.currency.currency_code,
     "customer-locale": "ar-SA", // TODO
-    taxation: "gross",
-    "invoice-no": order.order_id,
-    customer: getCustomer(data),
-    status: getStatus(data),
+    "taxation": "gross",
+    "invoice-no": orderData.order.fynd_order_id, // REAL INVOICE NO
+    "customer": getCustomer(data, orderData),
+    "status": getStatus(data, orderData),
     "channel-type": order.meta.order_platform,
-    "current-order-no": order.order_id,
+    "current-order-no": order.fynd_order_id,
     "product-lineitems": {
       "product-lineitem": getProductLineItems(data, orderData),
     },
@@ -73,7 +50,7 @@ const getOrder = (data, orderData) => {
     shipments: {
       shipment: shipmentListMapped,
     },
-    totals: getTotalsOfOrder(data, orderData, shipmentListMapped),
+    totals: getTotalsOfOrder(data, orderData, allShipmentUtilMapList),
     payments: {
       payment: getPaymentArray(data, orderData),
     },
@@ -88,83 +65,157 @@ const getOrder = (data, orderData) => {
   };
 };
 
-// TODO: create a account and then place order to get customer detials
-const getCustomer = (data) => {
-  const event = data?.event;
-  const order = data?.payload.order;
-
-  let isguest = order.user.is_anonymous_user ? true : false;
-  let customer = {
-    guest: isguest,
-  };
-  const billAddr = order.shipments[0].billing_address_json;
-  customer = {
-    ...customer,
-    // "customer-no": 433922, // TODO
-    "customer-name": billAddr["name"],
-    "customer-email": billAddr?.email ?? "",
-    "billing-address": getBillingAddress(data),
-  };
-  return customer;
-};
 
 const getProductLineItems = (data, orderData) => {
-  const order = data?.payload.order;
+  const cancelledShipment = data?.payload.shipment;
   const prdListItems = [];
   let prdLinPosition = 1;
-  order.shipments.forEach((shipment) => {
-    // Shipment level
-    const shipmentId = shipment?.id;
-    const shipmentLvlInfoFromApi = orderData.shipments.find(
-      (e) => e.shipment_id == shipmentId
-    );
-    console.log(
-      "MEOW getProductLineItems ===> shipmentLvlInfoFromApi",
-      JSON.stringify(shipmentLvlInfoFromApi)
-    );
-    shipment.bags.forEach((item) => {
-      const itemDataFromApi = shipmentLvlInfoFromApi.bags.find(
-        (e) =>
-          e.article.identifiers.ean == item.article_json.identifier.ean &&
-          e.item.id == item.article_json.item_id
-      );
-      prdListItems.push({
-        "net-price": itemDataFromApi.financial_breakup.value_of_good,
-        tax: itemDataFromApi.financial_breakup.gst_fee,
-        "gross-price": itemDataFromApi.financial_breakup.price_effective,
-        "base-price": itemDataFromApi.financial_breakup.price_effective,
-        "lineitem-text": `${item.item?.name}`,
-        "tax-basis": itemDataFromApi.financial_breakup.price_effective,
-        position: prdLinPosition,
-        "product-id": item.item?.id,
-        "product-name": `${item.item?.name}`,
-        quantity: item?.quantity,
-        "tax-rate": itemDataFromApi.financial_breakup.gst_tax_percentage / 100,
-        "shipment-id": shipmentId,
-        gift: item?.article_json?.is_gift ?? false,
-        // "custom-attributes": {
-        //   "custom-attribute": [],
-        // },
-      });
-      prdLinPosition++;
+  // Shipment level
+  const shipmentId = cancelledShipment?.shipment_id;
+  const shipmentLvlInfoFromApi = orderData.shipments.find(
+    (e) => e.shipment_id == shipmentId
+  );
+  console.log(
+    "MEOW getProductLineItems ===> shipmentLvlInfoFromApi",
+    JSON.stringify(shipmentLvlInfoFromApi)
+  );
+  cancelledShipment.bags.forEach((item) => {
+    // Get data from API if Required
+    // const itemDataFromApi = shipmentLvlInfoFromApi.bags.find(
+    //   (e) =>
+    //     e.article.identifiers.ean == item.article_json.identifier.ean &&
+    //     e.item.id == item.article_json.item_id
+    // );
+    const financialBreakup = item.financial_breakup[0];
+    prdListItems.push({
+      "net-price": financialBreakup.value_of_good,
+      tax: financialBreakup.gst_fee,
+      "gross-price": financialBreakup.price_effective,
+      "base-price": financialBreakup.price_effective,
+      "lineitem-text": `${item.item?.attributes.name}`,
+      "tax-basis": financialBreakup.price_effective,
+      position: prdLinPosition,
+      "product-id": item.item?.id,
+      "product-name": `${item.item?.attributes.name}`,
+      quantity: item?.item?.quantity,
+      "tax-rate": financialBreakup.gst_tax_percentage / 100,
+      "shipment-id": shipmentId,
+      gift: false,
+      // "custom-attributes": {
+      //   "custom-attribute": [],
+      // },
     });
+    prdLinPosition++;
   });
 
   return prdListItems;
 };
 
+const getCustomer = (data, orderData) => {
+    const shipment = orderData.shipments[0];
+    let isguest = shipment.user.is_anonymous_user ? true : false;
+    let customer = {
+      guest: isguest,
+    };
+
+    const billAddr = shipment.billing_details;
+    customer = {
+      ...customer,
+      // "customer-no": 433922, // TODO
+      "customer-name": billAddr["name"],
+      "customer-email": billAddr?.email ?? "",
+      "billing-address": getBillingAddress(orderData),
+    };
+    return customer;
+  };
+
 const getShipments = (data, orderData) => {
-  const order = data?.payload.order;
+  const order = orderData?.order;
   const shipListItems = [];
   let prdLinPosition = 1;
-  order.shipments.forEach((shipment) => {
+  const cancelledShipment = data.payload.shipment;
+  // Shipment level
+  const shipmentId = cancelledShipment?.shipment_id;
+  const shipmentLvlInfoFromApi = orderData.shipments.find(
+    (e) => e.shipment_id == shipmentId
+  );
+  const priceEffective = cancelledShipment.prices?.price_effective ?? 0;
+  const valueOfGood = cancelledShipment.prices?.value_of_good ?? 0;
+  const adjustedMerchTax =
+    Math.floor((priceEffective - valueOfGood) * 100) / 100;
+
+  shipListItems.push({
+    _attributes: {
+      "shipment-id": shipmentId,
+    },
+    status: {
+      "shipping-status": "NOT_SHIPPED",
+    },
+    "shipping-method": 1,
+    "shipping-address": {
+      "first-name": cancelledShipment.delivery_address.name,
+      "last-name": "",
+      address1: cancelledShipment.delivery_address.address1,
+      city: cancelledShipment.delivery_address.city,
+      "country-code": cancelledShipment.delivery_address.country_iso_code,
+      phone: `${
+        cancelledShipment.delivery_address.country_code +
+        " " +
+        cancelledShipment.delivery_address.phone
+      }`,
+      // "custom-attributes": {
+      //   "custom-attribute": [],
+      // },
+    },
+    gift: false,
+    totals: {
+      "merchandize-total": {
+        "net-price": cancelledShipment.prices.price_effective,
+        tax: adjustedMerchTax,
+        "gross-price": cancelledShipment.prices.price_effective,
+      },
+      "adjusted-merchandize-total": {
+        "net-price": cancelledShipment.prices.price_effective,
+        tax: adjustedMerchTax,
+        "gross-price": cancelledShipment.prices.price_effective,
+      },
+      "shipping-total": {
+        "net-price": cancelledShipment.prices.delivery_charge,
+        tax: 0,
+        "gross-price": cancelledShipment.prices.delivery_charge,
+      },
+      "adjusted-shipping-total": {
+        "net-price": cancelledShipment.prices.delivery_charge,
+        tax: 0,
+        "gross-price": cancelledShipment.prices.delivery_charge,
+      },
+      "shipment-total": {
+        "net-price":
+        cancelledShipment.prices.price_effective +
+        cancelledShipment.prices.delivery_charge,
+        tax: adjustedMerchTax,
+        "gross-price":
+        cancelledShipment.prices.price_effective +
+        cancelledShipment.prices.delivery_charge,
+      },
+    },
+  });
+  return shipListItems;
+};
+
+const getFullShipments = (data, orderData) => {
+  const order = orderData?.order;
+  const allShipments = orderData.shipments;
+  const shipListItems = [];
+  let prdLinPosition = 1;
+  allShipments.forEach((shipment) => {
     // Shipment level
-    const shipmentId = shipment?.id;
-    const shipmentLvlInfoFromApi = orderData.shipments.find(
-      (e) => e.shipment_id == shipmentId
-    );
-    const priceEffective = shipmentLvlInfoFromApi.prices?.price_effective ?? 0;
-    const valueOfGood = shipmentLvlInfoFromApi.prices?.value_of_good ?? 0;
+    const shipmentId = shipment?.shipment_id;
+    // const shipmentLvlInfoFromApi = orderData.shipments.find(
+    //   (e) => e.shipment_id == shipmentId
+    // );
+    const priceEffective = shipment.prices?.price_effective ?? 0;
+    const valueOfGood = shipment.prices?.value_of_good ?? 0;
     const adjustedMerchTax =
       Math.floor((priceEffective - valueOfGood) * 100) / 100;
 
@@ -177,15 +228,15 @@ const getShipments = (data, orderData) => {
       },
       "shipping-method": 1,
       "shipping-address": {
-        "first-name": shipment.delivery_address_json.name,
+        "first-name": shipment.delivery_details.name,
         "last-name": "",
-        address1: shipment.delivery_address_json.address1,
-        city: shipment.delivery_address_json.city,
-        "country-code": shipment.delivery_address_json.country_iso_code,
+        address1: shipment.delivery_details.address1,
+        city: shipment.delivery_details.city,
+        "country-code": shipment.delivery_details.country_iso_code,
         phone: `${
-          shipment.delivery_address_json.country_code +
+          shipment.delivery_details.country_code +
           " " +
-          shipment.delivery_address_json.phone
+          shipment.delivery_details.phone
         }`,
         // "custom-attributes": {
         //   "custom-attribute": [],
@@ -194,33 +245,33 @@ const getShipments = (data, orderData) => {
       gift: false,
       totals: {
         "merchandize-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.price_effective,
+          "net-price": shipment.prices.price_effective,
           tax: adjustedMerchTax,
-          "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
+          "gross-price": shipment.prices.price_effective,
         },
         "adjusted-merchandize-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.price_effective,
+          "net-price": shipment.prices.price_effective,
           tax: adjustedMerchTax,
-          "gross-price": shipmentLvlInfoFromApi.prices.price_effective,
+          "gross-price": shipment.prices.price_effective,
         },
         "shipping-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+          "net-price": shipment.prices.delivery_charge,
           tax: 0,
-          "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+          "gross-price": shipment.prices.delivery_charge,
         },
         "adjusted-shipping-total": {
-          "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+          "net-price": shipment.prices.delivery_charge,
           tax: 0,
-          "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
+          "gross-price": shipment.prices.delivery_charge,
         },
         "shipment-total": {
           "net-price":
-            shipmentLvlInfoFromApi.prices.price_effective +
-            shipmentLvlInfoFromApi.prices.delivery_charge,
+          shipment.prices.price_effective +
+          shipment.prices.delivery_charge,
           tax: adjustedMerchTax,
           "gross-price":
-            shipmentLvlInfoFromApi.prices.price_effective +
-            shipmentLvlInfoFromApi.prices.delivery_charge,
+          shipment.prices.price_effective +
+          shipment.prices.delivery_charge,
         },
       },
     });
@@ -230,33 +281,32 @@ const getShipments = (data, orderData) => {
 };
 
 const getShipmentLineItemDetails = (data, orderData) => {
-  const order = data?.payload.order;
+  const order = orderData?.order;
   const shipmentListDetailItems = [];
   let prdLinPosition = 1;
-  order.shipments.forEach((shipment) => {
-    // Shipment level
-    const shipmentId = shipment?.id;
-    const shipmentLvlInfoFromApi = orderData.shipments.find(
-      (e) => e.shipment_id == shipmentId
-    );
-    shipmentListDetailItems.push({
-      "net-price": shipmentLvlInfoFromApi.prices.delivery_charge,
-      tax: 0,
-      "gross-price": shipmentLvlInfoFromApi.prices.delivery_charge,
-      "base-price": shipmentLvlInfoFromApi.prices.delivery_charge,
-      "lineitem-text": "Shipping",
-      "tax-basis": 0,
-      "item-id": "STANDARD_SHIPPING",
-      "shipment-id": shipmentId,
-      "tax-rate": 0,
-    });
+  const cancelledShipment = data.payload.shipment;
+  // Shipment level
+  const shipmentId = cancelledShipment?.shipment_id;
+  const shipmentLvlInfoFromApi = orderData.shipments.find(
+    (e) => e.shipment_id == shipmentId
+  );
+  shipmentListDetailItems.push({
+    "net-price": cancelledShipment.prices.delivery_charge,
+    tax: 0,
+    "gross-price": cancelledShipment.prices.delivery_charge,
+    "base-price": cancelledShipment.prices.delivery_charge,
+    "lineitem-text": "Shipping",
+    "tax-basis": 0,
+    "item-id": "STANDARD_SHIPPING",
+    "shipment-id": shipmentId,
+    "tax-rate": 0,
   });
 
   return shipmentListDetailItems;
 };
 
 const getTotalsOfOrder = (data, orderData, shipmentListMapped) => {
-  const order = data?.payload.order;
+  const order = orderData?.order;
   let totalMapped = {
     "merchandize-total": {
       "net-price": 0,
@@ -373,32 +423,29 @@ const getFloatFormatter = (x) => {
 };
 
 const getFirstAndLastName = (data) => {
-  data = data.trim()
-  const parts = data.split(' ');
+  data = data.trim();
+  const parts = data.split(" ");
 
-  let firstName = '';
-  let lastName = '';
+  let firstName = "";
+  let lastName = "";
 
   if (parts.length === 1) {
-      firstName = parts[0];
-      lastName = '';
+    firstName = parts[0];
+    lastName = "";
   } else if (parts.length === 2) {
-      firstName = parts[0];
-      lastName = parts[1];
+    firstName = parts[0];
+    lastName = parts[1];
   } else {
-      firstName = parts.slice(0, parts.length - 1).join(' ');
-      lastName = parts[parts.length - 1];
+    firstName = parts.slice(0, parts.length - 1).join(" ");
+    lastName = parts[parts.length - 1];
   }
 
   return { firstName, lastName };
 };
 
 const getBillingAddress = (data) => {
-  const event = data?.event;
-  const order = data?.payload.order;
-  const billAddr = order.shipments[0].billing_address_json;
-
-  const { firstName, lastName } = getFirstAndLastName(billAddr.name)
+  const billAddr = data.shipments[0].billing_details;
+  const { firstName, lastName } = getFirstAndLastName(billAddr.name);
 
   return {
     "first-name": firstName,
@@ -414,28 +461,29 @@ const getBillingAddress = (data) => {
   };
 };
 
-const getStatus = (data) => {
-  const order = data?.payload?.order;
-
+const getStatus = (data, orderData) => {
+  const order = orderData?.order;
+  const shipmentStatus = data?.payload?.shipment.status;
   // TODO: create more mappings
   const paymentStatusMapper = {
     complete: "PAID",
   };
   const confirmationStatusMapper = {
     placed: "CONFIRMED",
+    cancelled_fynd: "CANCELLED"
   };
 
   return {
-    "order-status": "NEW",
+    "order-status": confirmationStatusMapper[shipmentStatus],
     "shipping-status": "NOT_SHIPPED",
-    "confirmation-status": confirmationStatusMapper[order.status],
+    "confirmation-status": "CONFIRMED",
     "payment-status": paymentStatusMapper[order.meta.transaction_data.status],
   };
 };
 
 // TODO: complete this whole functiom
 const getPaymentArray = (data, orderData) => {
-  const order = data?.payload?.order;
+  const order = orderData?.order;
   let payments = [];
 
   for (paymentTypeKey in order.payment_methods) {
@@ -444,7 +492,7 @@ const getPaymentArray = (data, orderData) => {
       "custom-method": {
         "method-name": order.payment_methods[paymentTypeKey].name,
       },
-      amount: order.payment.price_breakup.order_value,
+      amount: order.payment_methods[paymentTypeKey].amount,
       "processor-id":
         order.payment_methods[paymentTypeKey].meta.payment_identifier,
       "transaction-id": order.payment_methods[paymentTypeKey].meta.payment_id,
@@ -457,52 +505,6 @@ const getPaymentArray = (data, orderData) => {
   }
 
   return payments;
-};
-
-exports.xmlProcessor = async (jsonObj, s3Path) => {
-  // Convert JSON to XML
-  var options = { compact: true, ignoreComment: true, spaces: 4 };
-  var xml = xmljs.json2xml(jsonObj, options);
-  xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + xml;
-  console.log("XML FORMAT TRANSFORMED ORDER", xml);
-
-  // SEND TO S3 Bucket
-  // const params = {
-  //   Bucket: process.env.SYNC_BUCKET_NAME,
-  //   Key: `OrderExports/NewOrders/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}_${ Date.now() }.xml`,
-  //   Body: xml,
-  //   ContentType: "application/xml",
-  // };
-  // await s3.putObject(params).promise();
-  console.log("Successfully uploaded file to S3 Bucket");
-};
-
-exports.authorisationToken = async () => {
-  const url =
-    "https://api.fynd.com/service/panel/authentication/v1.0/company/7251/oauth/token";
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: "Bearer oa-78c24c00b5d774dcde1a0cd1044f6db6615ef2dc",
-  };
-
-  const data = {
-    client_id: "6620edf33da73848580ff4ba",
-    client_secret: "9cA0QLL4c.af4RH",
-    grant_type: "client_credentials",
-  };
-
-  try {
-    const response = await axios.post(url, data, { headers });
-    return response.data?.access_token ?? "";
-  } catch (error) {
-    return {
-      statusCode: error.response ? error.response.status : 500,
-      body: JSON.stringify({
-        message: error.message,
-        error: error.response ? error.response.data : null,
-      }),
-    };
-  }
 };
 
 exports.getOrderById = async (order_id, token) => {

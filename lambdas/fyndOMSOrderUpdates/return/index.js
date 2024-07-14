@@ -2,7 +2,7 @@ const AWS = require('aws-sdk')
 const xmljs = require('xml-js')
 const s3 = new AWS.S3()
 
-const orderTransformer = (eventData) => {
+export const orderReturnTransformer = (eventData) => {
   const { payload: { shipment } } = eventData
 
   const orderId = shipment.order_id

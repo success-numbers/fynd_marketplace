@@ -1,0 +1,1253 @@
+{
+    "event": {
+        "trace_id": [
+            "00000000000000005948646323bd9407"
+        ],
+        "name": "shipment",
+        "type": "update",
+        "version": "1",
+        "created_timestamp": 1720622179505,
+        "id": "g/+zMrUi+MKIJMBCrW0svRRHwWuhXZ098xuyT+pnUcg=",
+        "category": "application",
+        "referer": "fynd.com"
+    },
+    "company_id": 7251,
+    "application_id": "661e55cf1970c302eac64f3e",
+    "contains": [
+        "shipment"
+    ],
+    "payload": {
+        "shipment": {
+            "status": "cancelled_fynd",
+            "is_active": true,
+            "shipment_status": {
+                "shipment_id": "17206221791481600241",
+                "bag_list": [
+                    "35742731"
+                ],
+                "id": 181012648,
+                "updated_ts": "2024-07-10T14:36:19Z",
+                "status": "cancelled_fynd",
+                "created_ts": "2024-07-10T14:36:19Z",
+                "created_at": "2024-07-10T20:06:19+00:00",
+                "meta": {
+                    "request_meta": {},
+                    "state_manager_used": "entity"
+                },
+                "current_shipment_status": "cancelled_fynd",
+                "status_created_at": "2024-07-10T20:06:19+00:00"
+            },
+            "application_id": "661e55cf1970c302eac64f3e",
+            "shipment_id": "17206221791481600241",
+            "company_id": 7251,
+            "app_company_id": 7251,
+            "order_id": "FY668E9C370E26A63D17",
+            "merchant_id": "",
+            "user": {
+                "email": null,
+                "mongo_user_id": null,
+                "first_name": "",
+                "gender": null,
+                "mobile": null,
+                "id": null,
+                "user_oid": null,
+                "last_name": "",
+                "meta": null,
+                "external_customer_id": "",
+                "is_anonymous_user": true
+            },
+            "delivery_address": {
+                "id": "661e5ebaff1e08c62e9fd962",
+                "uid": 5798186,
+                "area": "8027",
+                "city": "Abha",
+                "name": "Utsav Majhi",
+                "email": "",
+                "phone": "501234567",
+                "state": "",
+                "sector": "Abha Al jadidah",
+                "address": "nearby plaza",
+                "country": "Saudi Arabia",
+                "pincode": "",
+                "user_id": null,
+                "version": "1.0",
+                "address1": "8027 nearby plaza\nAbha Al jadidah\nAbha\nSaudi Arabia",
+                "address2": "",
+                "landmark": "",
+                "latitude": 23.8859,
+                "area_code": "",
+                "longitude": 45.0792,
+                "created_at": "2024-07-10T20:05:35+00:00",
+                "state_code": "",
+                "updated_at": "2024-07-10T20:05:35+00:00",
+                "address_type": "Home",
+                "country_code": "+966",
+                "geo_location": {
+                    "latitude": 23.8859,
+                    "longitude": 45.0792
+                },
+                "area_code_slug": "pincode",
+                "contact_person": "Utsav Majhi",
+                "display_address": "8027 nearby plaza\nAbha Al jadidah\nAbha\nSaudi Arabia",
+                "address_category": "",
+                "country_iso_code": "SA",
+                "country_phone_code": "+966",
+                "delivery_address_id": 5798186
+            },
+            "billing_address": {
+                "id": "661e5ebaff1e08c62e9fd962",
+                "uid": 5798186,
+                "area": "8027",
+                "city": "Abha",
+                "name": "Utsav Majhi",
+                "email": "",
+                "phone": "501234567",
+                "state": "",
+                "sector": "Abha Al jadidah",
+                "address": "nearby plaza",
+                "country": "Saudi Arabia",
+                "pincode": "",
+                "user_id": null,
+                "version": "1.0",
+                "address1": "8027 nearby plaza\nAbha Al jadidah\nAbha\nSaudi Arabia",
+                "address2": "",
+                "landmark": "",
+                "latitude": 23.8859,
+                "area_code": "",
+                "longitude": 45.0792,
+                "created_at": "2024-07-10 20:05:35",
+                "state_code": "",
+                "updated_at": "2024-07-10 20:05:35",
+                "address_type": "Home",
+                "country_code": "+966",
+                "geo_location": {
+                    "latitude": 23.8859,
+                    "longitude": 45.0792
+                },
+                "area_code_slug": "pincode",
+                "contact_person": "Utsav Majhi",
+                "display_address": "8027 nearby plaza\nAbha Al jadidah\nAbha\nSaudi Arabia",
+                "address_category": "",
+                "country_iso_code": "SA",
+                "country_phone_code": "+966",
+                "delivery_address_id": 5798186
+            },
+            "delivery_partner_details": {
+                "id": null,
+                "name": null,
+                "awb_no": null,
+                "eway_bill_id": null,
+                "track_url": null,
+                "gst_tag": "sgst",
+                "extension_id": null,
+                "scheme_id": null,
+                "courier_partner_slug": null
+            },
+            "bags": [
+                {
+                    "financial_breakup": [
+                        {
+                            "brand_calculated_amount": 80,
+                            "discount": 20,
+                            "gst_fee": 10.43,
+                            "gst_tax_percentage": 15,
+                            "gst_tag": "SGST",
+                            "hsn_code": "012210012",
+                            "identifiers": {
+                                "ean": "5437457478"
+                            },
+                            "price_marked": 100,
+                            "tax_collected_at_source": 0,
+                            "tcs_percentage": 0,
+                            "total_units": 1,
+                            "value_of_good": 69.57,
+                            "item_name": "BIANCA love organic coral/white Cotton Super Soft Waffel Towel -2pc Bath Towel (152 x 76 cm)",
+                            "size": "OS",
+                            "amount_paid": 80,
+                            "delivery_charge": 0,
+                            "price_effective": 80,
+                            "refund_amount": 80
+                        }
+                    ],
+                    "entity_type": "bag",
+                    "item": {
+                        "attributes": {
+                            "name": "BIANCA love organic coral/white Cotton Super Soft Waffel Towel -2pc Bath Towel (152 x 76 cm)",
+                            "essential": "No",
+                            "brand_name": "Generic",
+                            "net-quantity": "1 N",
+                            "marketer-name": "Bianca",
+                            "primary_color": "Amber",
+                            "marketer-address": "Bianca",
+                            "primary_material": "Acrylic",
+                            "primary_color_hex": "FFBF00",
+                            "media": []
+                        },
+                        "color": null,
+                        "branch_url": null,
+                        "l2_category_id": 1033,
+                        "gender": null,
+                        "l1_category": [
+                            "Bed"
+                        ],
+                        "can_cancel": true,
+                        "meta": {
+                            "tags": [],
+                            "departments": [
+                                5
+                            ]
+                        },
+                        "brand_id": 5989,
+                        "name": "BIANCA love organic coral/white Cotton Super Soft Waffel Towel -2pc Bath Towel (152 x 76 cm)",
+                        "slug_key": "bianca-love-organic-coral-white-cotton-super-soft-waffel-towel-2pc-bath-towel-152-x-76-cm-10208879",
+                        "id": 10208879,
+                        "brand": "Generic",
+                        "l3_category_name": "Bed Sheets",
+                        "l3_category": 553,
+                        "code": "RVVVKTYBWU",
+                        "l2_category": [
+                            "Bed Linen"
+                        ],
+                        "webstore_product_url": null,
+                        "last_updated_at": "2024-07-10T20:05:36+00:00",
+                        "l1_category_id": 1025,
+                        "can_return": true,
+                        "department_id": 5,
+                        "size": "OS",
+                        "image": [
+                            "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/270x0/k6rRTWKMw-Dan-Brown.jpeg"
+                        ]
+                    },
+                    "brand": {
+                        "is_virtual_invoice": false,
+                        "logo": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/brands/pictures/square-logo/original/AogxD7pYK-Logo.png",
+                        "id": 5989,
+                        "modified_on": "2023-06-20T19:00:36+00:00",
+                        "credit_note_allowed": false,
+                        "created_on": "2023-05-24T05:34:01+00:00",
+                        "brand_name": "Generic"
+                    },
+                    "bag_id": 35742731,
+                    "article": {
+                        "identifiers": {
+                            "ean": "5437457478"
+                        },
+                        "esp_modified": false,
+                        "size": "OS",
+                        "code": "",
+                        "raw_meta": null,
+                        "set": {},
+                        "is_set": false,
+                        "seller_identifier": "5437457478",
+                        "return_config": {
+                            "time": 0,
+                            "unit": "days",
+                            "returnable": false
+                        },
+                        "_id": "661ebbdc8d196f993e6db098",
+                        "uid": "661ebbdc8d196f993e6db098",
+                        "child_details": {},
+                        "dimensions": {
+                            "unit": "cm",
+                            "width": 100,
+                            "height": 10,
+                            "length": 100,
+                            "is_default": true
+                        },
+                        "weight": {
+                            "unit": "gram",
+                            "shipping": 90,
+                            "is_default": true
+                        },
+                        "currency": {
+                            "code": "SAR",
+                            "rate": 1
+                        },
+                        "expiration_date": "9998-01-30 23:59:00"
+                    },
+                    "current_operational_status": {
+                        "state_id": 17,
+                        "state_type": "operational",
+                        "shipment_id": "17206221791481600241",
+                        "bag_id": 35742731,
+                        "store_id": 24558,
+                        "id": 235711649,
+                        "updated_ts": "2024-07-10T14:36:19Z",
+                        "delivery_partner_id": null,
+                        "status": "cancelled_fynd",
+                        "delivery_awb_number": null,
+                        "kafka_sync": false,
+                        "updated_at": "2024-07-10T20:06:19+00:00",
+                        "created_at": "2024-07-10T20:06:19+00:00",
+                        "created_ts": "2024-07-10T14:36:19Z",
+                        "bag_state_mapper": {
+                            "journey_type": "forward",
+                            "app_display_name": "Cancelled",
+                            "state_type": "operational",
+                            "app_state_name": "cancelled",
+                            "name": "cancelled_fynd",
+                            "app_facing": true,
+                            "id": 17,
+                            "display_name": "Cancelled by Fynd",
+                            "notify_customer": true,
+                            "is_active": true
+                        },
+                        "reasons": [
+                            {
+                                "slug": "defective_product",
+                                "display_name": "Defective Product",
+                                "id": 182,
+                                "state": "cancelled_fynd",
+                                "text": "Defective Product",
+                                "quantity": 1,
+                                "inventory_flag": true
+                            }
+                        ],
+                        "action_user": {}
+                    },
+                    "affiliate_bag_details": {
+                        "affiliate_bag_id": "35742731",
+                        "affiliate_order_id": "FY668E9C370E26A63D17",
+                        "affiliate_meta": {
+                            "fynd": {
+                                "fulfilment_identifier": "pulse",
+                                "fulfilment_identifiers_list": [
+                                    "pulse"
+                                ]
+                            },
+                            "channel_shipment_id": null,
+                            "channel_order_id": null,
+                            "due_date": null,
+                            "is_priority": false,
+                            "box_type": null,
+                            "coupon_code": null,
+                            "size_level_total_qty": 1,
+                            "loyalty_discount": 0,
+                            "employee_discount": 0
+                        },
+                        "loyalty_discount": 0,
+                        "employee_discount": 0
+                    },
+                    "payment_methods": {
+                        "COD": {
+                            "meta": {
+                                "payment_gateway": "Fynd",
+                                "payment_identifier": "11"
+                            },
+                            "mode": "COD",
+                            "amount": 80,
+                            "identifier": "COD11"
+                        }
+                    },
+                    "payment_info": [
+                        {
+                            "meta": {
+                                "payment_gateway": "Fynd",
+                                "payment_identifier": "11"
+                            },
+                            "mode": "COD",
+                            "amount": 80,
+                            "identifier": "COD11"
+                        }
+                    ],
+                    "quantity": 1,
+                    "prices": {
+                        "price_effective": 80,
+                        "discount": 20,
+                        "amount_paid": 80,
+                        "coupon_effective_discount": 0,
+                        "delivery_charge": 0,
+                        "fynd_credits": 0,
+                        "cod_charges": 0,
+                        "refund_credit": 0,
+                        "cashback": 0,
+                        "refund_amount": 80,
+                        "added_to_fynd_cash": false,
+                        "cashback_applied": 0,
+                        "gst_tax_percentage": 15,
+                        "value_of_good": 69.57,
+                        "price_marked": 100,
+                        "transfer_price": 0,
+                        "brand_calculated_amount": 80,
+                        "tax_collected_at_source": 0,
+                        "tcs_percentage": 0,
+                        "promotion_effective_discount": 0,
+                        "gift_price": 0,
+                        "coupon_value": 0,
+                        "seller_promotion_effective_discount": 0,
+                        "fynd_promotion_effective_discount": 0,
+                        "amount_paid_roundoff": 80
+                    },
+                    "order_created": "2024-07-10T20:05:36+00:00",
+                    "gst_details": {
+                        "gstin_code": null,
+                        "gst_tag": "SGST",
+                        "hsn_code": "012210012",
+                        "value_of_good": 69.57,
+                        "gst_tax_percentage": 15,
+                        "is_default_hsn_code": true,
+                        "brand_calculated_amount": 80,
+                        "tax_collected_at_source": 0,
+                        "hsn_code_id": "65a6a7ea58352b6d2c517b34",
+                        "gst_fee": 10.43,
+                        "igst_tax_percentage": 0,
+                        "sgst_tax_percentage": 7.5,
+                        "cgst_tax_percentage": 7.5,
+                        "igst_gst_fee": "0",
+                        "cgst_gst_fee": "5.21",
+                        "sgst_gst_fee": "5.21"
+                    },
+                    "line_number": 1,
+                    "applied_promos": [],
+                    "meta": {
+                        "group_id": "",
+                        "gift_card": {
+                            "gift_price": 0,
+                            "display_text": "",
+                            "is_gift_applied": false
+                        },
+                        "_custom_json": {
+                            "_display": []
+                        },
+                        "docket_number": "172062217914816002411",
+                        "partial_can_ret": false,
+                        "country_of_origin": "Saudi Arabia",
+                        "parent_docket_number": "172062213572918311551",
+                        "reverse_docket_number": "172062213572918311551",
+                        "delivery_charges_hsn_code": "012210012",
+                        "multi_quantity_bag_enabled": false
+                    }
+                }
+            ],
+            "bag_status_history": [
+                {
+                    "state_id": 89,
+                    "state_type": "operational",
+                    "shipment_id": "17206221357291831155",
+                    "bag_id": 35742731,
+                    "store_id": 24558,
+                    "id": 235711535,
+                    "updated_ts": "2024-07-10T14:35:35Z",
+                    "delivery_partner_id": null,
+                    "status": "pending",
+                    "delivery_awb_number": null,
+                    "kafka_sync": false,
+                    "updated_at": "2024-07-10T20:05:36+00:00",
+                    "created_at": "2024-07-10T20:05:36+00:00",
+                    "created_ts": "2024-07-10T14:35:35Z",
+                    "bag_state_mapper": {
+                        "journey_type": "forward",
+                        "app_display_name": "Pending",
+                        "state_type": "operational",
+                        "app_state_name": "pending",
+                        "name": "pending",
+                        "app_facing": true,
+                        "id": 89,
+                        "display_name": "Pending",
+                        "notify_customer": true,
+                        "is_active": true
+                    },
+                    "reasons": [],
+                    "action_user": {}
+                },
+                {
+                    "state_id": 1,
+                    "state_type": "operational",
+                    "shipment_id": "17206221357291831155",
+                    "bag_id": 35742731,
+                    "store_id": 24558,
+                    "id": 235711536,
+                    "updated_ts": "2024-07-10T14:35:35Z",
+                    "delivery_partner_id": null,
+                    "status": "placed",
+                    "delivery_awb_number": null,
+                    "kafka_sync": false,
+                    "updated_at": "2024-07-10T20:05:36+00:00",
+                    "created_at": "2024-07-10T20:05:36+00:00",
+                    "created_ts": "2024-07-10T14:35:35Z",
+                    "bag_state_mapper": {
+                        "journey_type": "forward",
+                        "app_display_name": "Processing",
+                        "state_type": "operational",
+                        "app_state_name": "processing",
+                        "name": "placed",
+                        "app_facing": true,
+                        "id": 1,
+                        "display_name": "Placed",
+                        "notify_customer": true,
+                        "is_active": true
+                    },
+                    "reasons": [],
+                    "action_user": {}
+                },
+                {
+                    "state_id": 63,
+                    "state_type": "operational",
+                    "shipment_id": "17206221791481600241",
+                    "bag_id": 35742731,
+                    "store_id": 24558,
+                    "id": 235711648,
+                    "updated_ts": "2024-07-10T14:36:19Z",
+                    "delivery_partner_id": null,
+                    "status": "bag_not_confirmed",
+                    "delivery_awb_number": null,
+                    "kafka_sync": false,
+                    "updated_at": "2024-07-10T20:06:19+00:00",
+                    "created_at": "2024-07-10T20:06:19+00:00",
+                    "created_ts": "2024-07-10T14:36:19Z",
+                    "bag_state_mapper": {
+                        "journey_type": "forward",
+                        "app_display_name": "Bag Declined by store",
+                        "state_type": "operational",
+                        "app_state_name": "bag_not_confirmed",
+                        "name": "bag_not_confirmed",
+                        "app_facing": false,
+                        "id": 63,
+                        "display_name": "Bag Declined by store",
+                        "notify_customer": false,
+                        "is_active": true
+                    },
+                    "reasons": [
+                        {
+                            "slug": "defective_product",
+                            "display_name": "Defective Product",
+                            "id": 182,
+                            "state": "cancelled_fynd",
+                            "text": "Defective Product",
+                            "quantity": 1,
+                            "inventory_flag": true
+                        }
+                    ],
+                    "action_user": {}
+                },
+                {
+                    "state_id": 17,
+                    "state_type": "operational",
+                    "shipment_id": "17206221791481600241",
+                    "bag_id": 35742731,
+                    "store_id": 24558,
+                    "id": 235711649,
+                    "updated_ts": "2024-07-10T14:36:19Z",
+                    "delivery_partner_id": null,
+                    "status": "cancelled_fynd",
+                    "delivery_awb_number": null,
+                    "kafka_sync": false,
+                    "updated_at": "2024-07-10T20:06:19+00:00",
+                    "created_at": "2024-07-10T20:06:19+00:00",
+                    "created_ts": "2024-07-10T14:36:19Z",
+                    "bag_state_mapper": {
+                        "journey_type": "forward",
+                        "app_display_name": "Cancelled",
+                        "state_type": "operational",
+                        "app_state_name": "cancelled",
+                        "name": "cancelled_fynd",
+                        "app_facing": true,
+                        "id": 17,
+                        "display_name": "Cancelled by Fynd",
+                        "notify_customer": true,
+                        "is_active": true
+                    },
+                    "reasons": [
+                        {
+                            "slug": "defective_product",
+                            "display_name": "Defective Product",
+                            "id": 182,
+                            "state": "cancelled_fynd",
+                            "text": "Defective Product",
+                            "quantity": 1,
+                            "inventory_flag": true
+                        }
+                    ],
+                    "action_user": {}
+                }
+            ],
+            "fulfilling_store": {
+                "id": 24558,
+                "code": "HS-95635",
+                "name": "Business 1",
+                "address": "Nearby SBZ Plaza\nAl Jabal\nTarut 32615\nSaudi Arabia, Tarut - 32615",
+                "state": "",
+                "city": "Tarut",
+                "pincode": "32615",
+                "country": "Saudi Arabia",
+                "phone": "9660501234567",
+                "meta": {
+                    "timing": [
+                        {
+                            "weekday": "monday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        },
+                        {
+                            "weekday": "tuesday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        },
+                        {
+                            "weekday": "wednesday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        },
+                        {
+                            "weekday": "thursday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        },
+                        {
+                            "weekday": "friday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        },
+                        {
+                            "weekday": "saturday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        },
+                        {
+                            "weekday": "sunday",
+                            "opening": {
+                                "hour": 11,
+                                "minute": 0
+                            },
+                            "closing": {
+                                "hour": 21,
+                                "minute": 30
+                            },
+                            "open": true
+                        }
+                    ],
+                    "stage": null,
+                    "display_name": "Business 1",
+                    "notification_emails": [
+                        "sumit.krishnan@snumbers.com"
+                    ],
+                    "product_return_config": {
+                        "on_same_store": true
+                    },
+                    "gst_credentials": {
+                        "e_invoice": {
+                            "enabled": false
+                        },
+                        "e_waybill": {
+                            "enabled": false
+                        }
+                    },
+                    "gst_number": null,
+                    "additional_contact_details": {
+                        "number": [
+                            "966 - 0501234567"
+                        ]
+                    },
+                    "documents": {},
+                    "auto_invoice": true,
+                    "credit_note": true,
+                    "ewaybill_portal_details": null
+                },
+                "fulfillment_channel": "pulse",
+                "location_type": "high_street",
+                "company_id": 7251,
+                "is_active": false,
+                "tags": []
+            },
+            "prices": {
+                "amount_paid": 80,
+                "refund_amount": 80,
+                "price_marked": 100,
+                "cod_charges": 0,
+                "discount": 20,
+                "cashback_applied": 0,
+                "delivery_charge": 0,
+                "fynd_credits": 0,
+                "cashback": 0,
+                "price_effective": 80,
+                "refund_credit": 0,
+                "value_of_good": 69.57,
+                "coupon_value": 0,
+                "tax_collected_at_source": 0,
+                "promotion_effective_discount": 0,
+                "fynd_promotion_effective_discount": 0,
+                "seller_promotion_effective_discount": 0,
+                "cn_refund_amount": 0,
+                "gift_price": 0,
+                "amount_paid_roundoff": 80
+            },
+            "payments": {
+                "id": 2,
+                "mode": "COD",
+                "logo": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/payments/original/2qRUOzyNu-cod.png",
+                "display_name": "COD",
+                "display_priority": 1,
+                "source": "Cash on Delivery",
+                "is_active": true
+            },
+            "affiliate_details": {
+                "id": "661e55cf1970c302eac64f3e",
+                "affiliate_bag_id": "35742731",
+                "affiliate_order_id": "FY668E9C370E26A63D17",
+                "company_affiliate_tag": "Business 1",
+                "affiliate_id": "661e55cf1970c302eac64f3e",
+                "affiliate_shipment_id": "17206221357291831155",
+                "shipment_meta": {
+                    "sla": 1720708530,
+                    "dp_id": "652255c58ab4101b2595c6c5",
+                    "weight": 90,
+                    "dp_name": "",
+                    "external": {},
+                    "vertical": "NA",
+                    "dimension": {
+                        "width": 34.29,
+                        "height": 11,
+                        "length": 43.18
+                    },
+                    "formatted": {
+                        "max": "Fri, 12 Jul",
+                        "min": "Fri, 12 Jul"
+                    },
+                    "lock_data": {
+                        "mto": false,
+                        "locked": false,
+                        "lock_message": ""
+                    },
+                    "timestamp": {
+                        "max": 1720794930,
+                        "min": 1720794930
+                    },
+                    "awb_number": "",
+                    "bag_weight": {
+                        "35742731": 90
+                    },
+                    "debug_info": {
+                        "stormbreaker_uuid": ""
+                    },
+                    "dp_options": {},
+                    "order_type": "HomeDelivery",
+                    "dp_sort_key": null,
+                    "forward_awb": "",
+                    "is_self_ship": true,
+                    "parent_dp_id": "652255c58ab4101b2595c6c5",
+                    "tracking_url": "",
+                    "delivery_slots": {},
+                    "is_auto_assign": true,
+                    "packaging_name": "POLYB_L_1713P5",
+                    "courier_partners": [
+                        {
+                            "tat": {
+                                "max": 86400,
+                                "min": 86400
+                            },
+                            "slug": "652255c58ab4101b2595c6c5|652255c58ab4101b2595c6c5",
+                            "area_code": {
+                                "source": "",
+                                "destination": ""
+                            },
+                            "scheme_id": "652255c58ab4101b2595c6c5",
+                            "display_name": "Self Delivery",
+                            "extension_id": "652255c58ab4101b2595c6c5",
+                            "is_self_ship": true,
+                            "is_qc_enabled": true,
+                            "is_own_account": true
+                        }
+                    ],
+                    "fulfillment_tags": [],
+                    "is_international": false,
+                    "is_export_shipment": false,
+                    "same_store_available": true,
+                    "promised_delivery_date": "",
+                    "estimated_delivery_date": "",
+                    "fulfilment_priority_text": null,
+                    "auto_trigger_dp_assignment_ACF": true,
+                    "eligible_for_split": false
+                },
+                "affiliate_meta": {
+                    "fynd": {
+                        "fulfilment_identifier": "pulse",
+                        "fulfilment_identifiers_list": [
+                            "pulse"
+                        ]
+                    },
+                    "channel_shipment_id": null,
+                    "channel_order_id": null,
+                    "due_date": null,
+                    "is_priority": false,
+                    "box_type": null,
+                    "coupon_code": null,
+                    "size_level_total_qty": 1,
+                    "loyalty_discount": 0,
+                    "employee_discount": 0
+                },
+                "affiliate_store_id": "24558",
+                "pdf_links": {
+                    "label_type": "fynd",
+                    "invoice_type": "fynd"
+                },
+                "config": {
+                    "id": "661e55cf1970c302eac64f3e",
+                    "meta": [],
+                    "name": "Business 1",
+                    "owner": "3b8be33b8395bfcfb43d34d2",
+                    "token": "q-pLFLje_",
+                    "secret": "T-UvET_s9c",
+                    "createdAt": null,
+                    "updatedAt": null,
+                    "description": "",
+                    "dp_assignment": true,
+                    "app_company_id": 7251,
+                    "article_assignment": {
+                        "level": "multi-companies",
+                        "strategy": "optimal"
+                    },
+                    "force_reassignment": false,
+                    "sales_channel_logo": "/misc/pictures/application-logos/original/olqHM8LNr-JioMart-Groceries.png",
+                    "order_source_domain": "business1.fynd.io",
+                    "post_order_reassignment": true
+                }
+            },
+            "article_details": {
+                "status": {
+                    "cancelled_fynd": {
+                        "661ebbdc8d196f993e6db098": {
+                            "uid": "661ebbdc8d196f993e6db098",
+                            "_id": "661ebbdc8d196f993e6db098",
+                            "is_set": false,
+                            "bag_ids": [
+                                {
+                                    "bag_id": 35742731,
+                                    "quantity": 1
+                                }
+                            ],
+                            "quantity": 1,
+                            "reasons": {
+                                "182": [
+                                    {
+                                        "slug": "defective_product",
+                                        "display_name": "Defective Product",
+                                        "id": 182,
+                                        "state": "cancelled_fynd",
+                                        "text": "Defective Product",
+                                        "quantity": 1,
+                                        "inventory_flag": true,
+                                        "bag_id": 35742731
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "dp_details": {
+                "id": null,
+                "name": null,
+                "awb_no": null,
+                "eway_bill_id": null,
+                "track_url": null,
+                "gst_tag": "sgst",
+                "extension_id": null,
+                "scheme_id": null,
+                "courier_partner_slug": null
+            },
+            "rto_address": {
+                "company_id": 7251,
+                "id": 24558,
+                "location_type": "high_street",
+                "code": "HS-95635",
+                "name": "Business 1",
+                "store_address_json": {
+                    "version": "1.0",
+                    "contact_person": "Utsav Majhi",
+                    "address": "Nearby SBZ Plaza",
+                    "address1": "Nearby SBZ Plaza\nAl Jabal\nTarut 32615\nSaudi Arabia",
+                    "address2": "",
+                    "name": "Utsav Majhi",
+                    "area": "",
+                    "area_code": "",
+                    "area_code_slug": "",
+                    "landmark": "",
+                    "city": "Tarut",
+                    "state": "",
+                    "country": "Saudi Arabia",
+                    "pincode": "32615",
+                    "longitude": 50.0624134,
+                    "sector": "Al Jabal",
+                    "latitude": 26.5660585,
+                    "phone": "9660501234567",
+                    "email": "utsav.manjhi@snumbers.com",
+                    "address_type": "store",
+                    "address_category": "store",
+                    "created_at": "2024-07-10 20:06:19",
+                    "updated_at": "2024-07-10 20:06:19",
+                    "country_phone_code": null,
+                    "country_iso_code": "SA",
+                    "country_code": "SA",
+                    "display_address": "Nearby SBZ Plaza\nAl Jabal\nTarut 32615\nSaudi Arabia"
+                },
+                "address1": "Nearby SBZ Plaza\nAl Jabal\nTarut 32615\nSaudi Arabia",
+                "address2": "",
+                "display_address": "Nearby SBZ Plaza\nAl Jabal\nTarut 32615\nSaudi Arabia",
+                "city": "Tarut",
+                "state": "",
+                "sector": "Al Jabal",
+                "country": "Saudi Arabia",
+                "pincode": "32615",
+                "store_email": "utsav.manjhi@snumbers.com",
+                "contact_person": "Utsav Majhi",
+                "phone": "9660501234567"
+            },
+            "weight": {
+                "value": 90,
+                "unit": "gram"
+            },
+            "shipment_meta": {
+                "sla": 1720708530,
+                "dp_id": "652255c58ab4101b2595c6c5",
+                "weight": 90,
+                "dp_name": "",
+                "external": {},
+                "vertical": "NA",
+                "dimension": {
+                    "width": 34.29,
+                    "height": 11,
+                    "length": 43.18
+                },
+                "formatted": {
+                    "max": "Fri, 12 Jul",
+                    "min": "Fri, 12 Jul"
+                },
+                "lock_data": {
+                    "mto": false,
+                    "locked": false,
+                    "lock_message": ""
+                },
+                "timestamp": {
+                    "max": 1720794930,
+                    "min": 1720794930
+                },
+                "awb_number": "",
+                "bag_weight": {
+                    "35742731": 90
+                },
+                "debug_info": {
+                    "stormbreaker_uuid": ""
+                },
+                "dp_options": {},
+                "order_type": "HomeDelivery",
+                "dp_sort_key": null,
+                "forward_awb": "",
+                "is_self_ship": true,
+                "parent_dp_id": "652255c58ab4101b2595c6c5",
+                "tracking_url": "",
+                "delivery_slots": {},
+                "is_auto_assign": true,
+                "packaging_name": "POLYB_L_1713P5",
+                "courier_partners": [
+                    {
+                        "tat": {
+                            "max": 86400,
+                            "min": 86400
+                        },
+                        "slug": "652255c58ab4101b2595c6c5|652255c58ab4101b2595c6c5",
+                        "area_code": {
+                            "source": "",
+                            "destination": ""
+                        },
+                        "scheme_id": "652255c58ab4101b2595c6c5",
+                        "display_name": "Self Delivery",
+                        "extension_id": "652255c58ab4101b2595c6c5",
+                        "is_self_ship": true,
+                        "is_qc_enabled": true,
+                        "is_own_account": true
+                    }
+                ],
+                "fulfillment_tags": [],
+                "is_international": false,
+                "is_export_shipment": false,
+                "same_store_available": true,
+                "promised_delivery_date": "",
+                "estimated_delivery_date": "",
+                "fulfilment_priority_text": null,
+                "auto_trigger_dp_assignment_ACF": true,
+                "eligible_for_split": false
+            },
+            "shipment_gst": {
+                "value_of_good": 69.57,
+                "gst_fee": 10.43,
+                "brand_calculated_amount": 80,
+                "tax_collected_at_source": 0,
+                "gstin_code": null
+            },
+            "store_invoice_id": "",
+            "credit_note_id": "",
+            "order_created": "2024-07-10T20:05:36+00:00",
+            "payment_methods": {
+                "COD": {
+                    "amount": 80,
+                    "mode": "COD",
+                    "name": "COD",
+                    "collect_by": "fynd",
+                    "refund_by": "fynd",
+                    "meta": {
+                        "id": null,
+                        "logo_url": {
+                            "large": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/payments/original/2qRUOzyNu-cod.png",
+                            "small": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/payments/original/2qRUOzyNu-cod.png"
+                        },
+                        "payment_id": "FY668E9C370E26A63D17",
+                        "payment_gateway": "Fynd",
+                        "payment_identifier": "11"
+                    },
+                    "display_name": "Cash on Delivery"
+                }
+            },
+            "payment_info": [
+                {
+                    "amount": 80,
+                    "mode": "COD",
+                    "name": "COD",
+                    "collect_by": "fynd",
+                    "refund_by": "fynd",
+                    "meta": {
+                        "id": null,
+                        "logo_url": {
+                            "large": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/payments/original/2qRUOzyNu-cod.png",
+                            "small": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/payments/original/2qRUOzyNu-cod.png"
+                        },
+                        "payment_id": "FY668E9C370E26A63D17",
+                        "payment_gateway": "Fynd",
+                        "payment_identifier": "11"
+                    },
+                    "display_name": "Cash on Delivery"
+                }
+            ],
+            "order": {
+                "ordering_channel": "ECOMM",
+                "affiliate_order_date": "2024-07-10T20:05:36+00:00",
+                "affiliate_order_id": "FY668E9C370E26A63D17",
+                "fynd_order_id": "FY668E9C370E26A63D17",
+                "mode_of_payment": "ECOMM",
+                "source": "uniket-desktop",
+                "total_order_value": 80,
+                "collect_by": "fynd",
+                "refund_by": "fynd",
+                "order_value": 80,
+                "meta": {
+                    "mode": "development",
+                    "files": [],
+                    "staff": {},
+                    "cart_id": 36380285,
+                    "comment": "",
+                    "currency": {
+                        "currency_code": "SAR",
+                        "currency_name": "Saudi Riyal",
+                        "currency_symbol": "SAR",
+                        "currency_sub_unit": "Hallalah"
+                    },
+                    "device_id": null,
+                    "extra_meta": {},
+                    "order_tags": [],
+                    "order_type": "HomeDelivery",
+                    "custom_cart": {},
+                    "custom_meta": [],
+                    "employee_id": null,
+                    "company_logo": "/misc/pictures/application-logos/original/olqHM8LNr-JioMart-Groceries.png",
+                    "payment_type": "fynd",
+                    "mongo_cart_id": 36380285,
+                    "cart_object_id": "668e9c2fe120db3699c18e94",
+                    "order_platform": "platform-site",
+                    "ordering_store": null,
+                    "seller_details": {
+                        "currency": {
+                            "code": "SAR",
+                            "name": "Saudi Riyal",
+                            "symbol": "SAR"
+                        },
+                        "timezone": "Asia/Riyadh",
+                        "country_code": "SA"
+                    },
+                    "conversion_rate": {
+                        "base": "SAR",
+                        "rates": {
+                            "SAR": {
+                                "name": "Saudi Riyal",
+                                "value": 1,
+                                "symbol": "SAR",
+                                "sub_unit": "Hallalah"
+                            }
+                        },
+                        "timestamp": 1720621200000
+                    },
+                    "currency_symbol": "﷼",
+                    "transaction_data": {
+                        "id": "TR668E9C370E82E37733",
+                        "amount": 80,
+                        "status": "complete",
+                        "currency": "SAR",
+                        "aggregator": "Fynd",
+                        "payment_id": "TR668E9C370E82E37733",
+                        "terminal_id": "None",
+                        "transaction_id": "TR668E9C370E82E37733",
+                        "unique_reference_number": "TR668E9C370E82E37733"
+                    },
+                    "ordering_store_id": null,
+                    "sales_channel_logo": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/misc/pictures/application-logos/original/olqHM8LNr-JioMart-Groceries.png",
+                    "usable_credit_notes": [],
+                    "order_child_entities": [
+                        "bag",
+                        "shipment"
+                    ],
+                    "billing_staff_details": {
+                        "id": null,
+                        "user": null,
+                        "last_name": null,
+                        "first_name": null,
+                        "employee_code": null
+                    },
+                    "platform_user_details": {
+                        "platform_user_id": null,
+                        "platform_user_last_name": "",
+                        "platform_user_first_name": "",
+                        "platform_user_employee_code": null
+                    }
+                }
+            },
+            "order_source": "uniket-desktop",
+            "journey_type": "forward",
+            "einvoice_info": {},
+            "lock_status": false,
+            "original_bag_list": [
+                35742731
+            ],
+            "shipment_update_time": 1720622179.3391247,
+            "transaction_meta": {
+                "id": "TR668E9C370E82E37733",
+                "amount": 80,
+                "status": "complete",
+                "currency": "SAR",
+                "aggregator": "Fynd",
+                "payment_id": "TR668E9C370E82E37733",
+                "terminal_id": "None",
+                "transaction_id": "TR668E9C370E82E37733",
+                "unique_reference_number": "TR668E9C370E82E37733"
+            },
+            "meta": {
+                "sla": 1720708530,
+                "dp_id": "652255c58ab4101b2595c6c5",
+                "weight": 90,
+                "dp_name": "",
+                "external": {},
+                "vertical": "NA",
+                "dimension": {
+                    "width": 34.29,
+                    "height": 11,
+                    "length": 43.18
+                },
+                "formatted": {
+                    "max": "Fri, 12 Jul",
+                    "min": "Fri, 12 Jul"
+                },
+                "lock_data": {
+                    "mto": false,
+                    "locked": false,
+                    "lock_message": ""
+                },
+                "timestamp": {
+                    "max": 1720794930,
+                    "min": 1720794930
+                },
+                "awb_number": "",
+                "bag_weight": {
+                    "35742731": 90
+                },
+                "debug_info": {
+                    "stormbreaker_uuid": ""
+                },
+                "dp_options": {},
+                "order_type": "HomeDelivery",
+                "dp_sort_key": null,
+                "forward_awb": "",
+                "is_self_ship": true,
+                "parent_dp_id": "652255c58ab4101b2595c6c5",
+                "tracking_url": "",
+                "delivery_slots": {},
+                "is_auto_assign": true,
+                "packaging_name": "POLYB_L_1713P5",
+                "courier_partners": [
+                    {
+                        "tat": {
+                            "max": 86400,
+                            "min": 86400
+                        },
+                        "slug": "652255c58ab4101b2595c6c5|652255c58ab4101b2595c6c5",
+                        "area_code": {
+                            "source": "",
+                            "destination": ""
+                        },
+                        "scheme_id": "652255c58ab4101b2595c6c5",
+                        "display_name": "Self Delivery",
+                        "extension_id": "652255c58ab4101b2595c6c5",
+                        "is_self_ship": true,
+                        "is_qc_enabled": true,
+                        "is_own_account": true
+                    }
+                ],
+                "fulfillment_tags": [],
+                "is_international": false,
+                "is_export_shipment": false,
+                "same_store_available": true,
+                "promised_delivery_date": "",
+                "estimated_delivery_date": "",
+                "fulfilment_priority_text": null,
+                "auto_trigger_dp_assignment_ACF": true,
+                "eligible_for_split": false
+            },
+            "previous_shipment_id": "17206221357291831155",
+            "fyndstore_emp": {},
+            "ordering_store": {},
+            "coupon": {},
+            "cart_info": {
+                "cart_id": "668e9c2fe120db3699c18e94",
+                "cart_uid": 36380285
+            }
+        }
+    }
+}
