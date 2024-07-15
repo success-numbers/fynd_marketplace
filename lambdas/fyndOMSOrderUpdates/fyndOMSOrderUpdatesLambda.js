@@ -11,9 +11,16 @@ exports.handler = async (event) => {
             console.log("Record Body", JSON.stringify(recordBody));
             const getFyndAuthToken = await util.authorisationToken();
             console.log("MEOW getFyndAuthToken",getFyndAuthToken)
-            const  { transformedPayload, s3Path } = await util.statusFlowConsumer(recordBody, getFyndAuthToken)
+            
+            const  { transformedPayload, s3PathKey } = await util.statusFlowConsumer(recordBody, getFyndAuthToken)
             console.log("MEOW TRANSFORMED ORDER", JSON.stringify(transformedPayload))
-            await util.xmlProcessor(transformedPayload, s3Path);
+
+            if (!transformedPayload) {
+                console.log('IGNORING this payload')
+                return
+            }
+
+            await util.xmlProcessor(transformedPayload, s3PathKey);
           }));
     } catch (e) {
         console.error('Error in fyndOMSOrderUpdates Lambda:', e.toString());

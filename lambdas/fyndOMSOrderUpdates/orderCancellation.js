@@ -20,7 +20,7 @@ exports.orderCancellation = (orderPayload, orderData) => {
   };
   console.log(finalPayload);
 
-  return finalPayload;
+  return { transformedPayload: finalPayload, s3PathKey: `OrderUpdates/CancelOrders/order_cancel_nice_fynd_${data["original-order-no"]}_${Date.now()}.xml` }
 };
 
 const getOrder = (data, orderData) => {

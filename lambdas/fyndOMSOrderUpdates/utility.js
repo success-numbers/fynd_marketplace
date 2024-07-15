@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const axios = require("axios");
 const xmljs = require("xml-js");
 const { orderCancellation } = require("./orderCancellation");
-const orderReturnTransformer = require("./return/index");
+const { orderReturnTransformer } = require("./orderReturn");
 
 const s3 = new AWS.S3();
 
@@ -16,14 +16,13 @@ exports.statusFlowConsumer = async (eventPayload, fyndAuthToken) => {
     case 'cancelled_fynd': {
       const getOrderData = await this.getOrderById(orderId, fyndAuthToken)
       // console.log("MEOW ORDER DATA", JSON.stringify(getOrderData))
-      const transformedOrder = orderCancellation(eventPayload, getOrderData)
-      return { transformedPayload: transformedOrder, s3Path: ''};
+      return orderCancellation(eventPayload, getOrderData)
     }
-    case 'return_initiated' : {
-      const transformedPayload = orderReturnTransformer(eventPayload)
-      return { transformedPayload: transformedOrder, s3Path: ''};
+    case 'return_bag_delivered' : {
+      return orderReturnTransformer(eventPayload)
     }
-    default: break;
+    default:
+      return {};
   }
 }
 
@@ -459,21 +458,21 @@ const getPaymentArray = (data, orderData) => {
   return payments;
 };
 
-exports.xmlProcessor = async (jsonObj, s3Path) => {
+exports.xmlProcessor = async (jsonObj, s3PathKey) => {
   // Convert JSON to XML
-  var options = { compact: true, ignoreComment: true, spaces: 4 };
+  var options = { compact: true, ignoreComment: true, spaces: 2 };
   var xml = xmljs.json2xml(jsonObj, options);
   xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + xml;
   console.log("XML FORMAT TRANSFORMED ORDER", xml);
 
   // SEND TO S3 Bucket
-  // const params = {
-  //   Bucket: process.env.SYNC_BUCKET_NAME,
-  //   Key: `OrderExports/NewOrders/order_export_nice_fynd_${jsonObj["orders"]["order"][0]["original-order-no"]}_${ Date.now() }.xml`,
-  //   Body: xml,
-  //   ContentType: "application/xml",
-  // };
-  // await s3.putObject(params).promise();
+  const params = {
+    Bucket: process.env.SYNC_BUCKET_NAME,
+    Key: s3PathKey,
+    Body: xml,
+    ContentType: "application/xml",
+  };
+  await s3.putObject(params).promise();
   console.log("Successfully uploaded file to S3 Bucket");
 };
 

@@ -2,7 +2,7 @@ const AWS = require('aws-sdk')
 const xmljs = require('xml-js')
 const s3 = new AWS.S3()
 
-export const orderReturnTransformer = (eventData) => {
+exports.orderReturnTransformer = (eventData) => {
   const { payload: { shipment } } = eventData
 
   const orderId = shipment.order_id
@@ -40,7 +40,7 @@ export const orderReturnTransformer = (eventData) => {
     ]
   }
 
-  return data
+  return { transformedPayload: data, s3PathKey: `OrderUpdates/ReturnOrders/order_return_nice_fynd_${orderId}_${Date.now()}.xml` }
 }
 
 
@@ -115,22 +115,4 @@ const getFirstAndLastName = (data) => {
   }
 
   return { firstName, lastName }
-}
-
-const xmlProcessor = async (jsonObj) => {
-  // Convert JSON to XML
-  var options = { compact: true, ignoreComment: true, spaces: 4 }
-  var xml = xmljs.json2xml(jsonObj, options)
-  xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + xml
-  console.log("XML FORMAT TRANSFORMED ORDER", xml)
-
-  // SEND TO S3 Bucket
-  const params = {
-    Bucket: process.env.SYNC_BUCKET_NAME,
-    Key: `OrderUpdates/ReturnOrders/order_return_nice_fynd_${jsonObj["orders"][0]["order"]['_attributes']["order-no"]}_${Date.now()}.xml`,
-    Body: xml,
-    ContentType: "application/xml",
-  }
-  await s3.putObject(params).promise()
-  console.log("Successfully uploaded file to S3 Bucket")
 }
