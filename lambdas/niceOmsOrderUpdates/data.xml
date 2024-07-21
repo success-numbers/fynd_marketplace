@@ -1,0 +1,220 @@
+<orders xmlns="http://www.demandware.com/xml/impex/order/2006-10-31">
+	<order order-no="SA200016411">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Shipped</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100091999</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-SHIPPED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:16:14.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016414">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Shipped</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100069005</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-SHIPPED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:16:14.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016417">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Shipped</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100073574</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-SHIPPED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:16:14.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016409">
+		<status>
+			<order-status>INTRANSIT</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Delivered</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100081976</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:17:04.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016409">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Shipped</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100081976</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-SHIPPED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:16:14.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016414">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Delivered</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100069005</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:17:04.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA00465005">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Delivered</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100112483</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>2-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-22T07:54:13.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+			<product-lineitem>
+				<product-id>100112474</product-id>
+				<position>2</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>2-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-22T07:54:13.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+			<product-lineitem>
+				<product-id>100112252</product-id>
+				<position>3</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-22T07:54:13.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016417">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Delivered</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100073574</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:17:04.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+	<order order-no="SA200016411">
+		<status>
+			<order-status>COMPLETED</order-status>
+			<shipping-status>SHIPPED</shipping-status>
+			<external-order-status>Delivered</external-order-status>
+		</status>
+		<custom-attributes>
+			<custom-attribute attribute-id="orderStatusUpdateDate">2024-01-28T14:18:50.000Z</custom-attribute>
+		</custom-attributes>
+		<product-lineitems>
+			<product-lineitem>
+				<product-id>100091999</product-id>
+				<position>1</position>
+				<custom-attributes>
+					<custom-attribute attribute-id="lineitem-status">
+						<value>1-DELIVERED</value>
+					</custom-attribute>
+					<custom-attribute attribute-id="shippingDate">2024-01-28T14:17:04.000Z</custom-attribute>
+				</custom-attributes>
+			</product-lineitem>
+		</product-lineitems>
+	</order>
+</orders>
