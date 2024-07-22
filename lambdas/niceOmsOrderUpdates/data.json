@@ -1,0 +1,634 @@
+[
+    {
+        "$": {
+            "order-no": "SA200016409"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Shipped"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:08:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100081976"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-SHIPPED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:16:14.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016414"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Shipped"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:15:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100069005"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-SHIPPED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:16:14.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016414"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Delivered"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:18:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100069005"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:17:04.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA00465005"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Delivered"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:18:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100112483"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "2-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-22T07:54:13.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "product-id": [
+                            "100112474"
+                        ],
+                        "position": [
+                            "2"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "2-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-22T07:54:13.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "product-id": [
+                            "100112252"
+                        ],
+                        "position": [
+                            "3"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-22T07:54:13.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016417"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Delivered"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:18:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100073574"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:17:04.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016411"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Delivered"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:18:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100091999"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:17:04.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016411"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Shipped"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:21:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100091999"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-SHIPPED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:16:14.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016417"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "COMPLETED"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Shipped"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:21:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100073574"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-SHIPPED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:16:14.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$": {
+            "order-no": "SA200016409"
+        },
+        "status": [
+            {
+                "order-status": [
+                    "INTRANSIT"
+                ],
+                "shipping-status": [
+                    "SHIPPED"
+                ],
+                "external-order-status": [
+                    "Delivered"
+                ]
+            }
+        ],
+        "custom-attributes": [
+            {
+                "custom-attribute": [
+                    {
+                        "_": "2024-01-28T14:23:50.000Z",
+                        "$": {
+                            "attribute-id": "orderStatusUpdateDate"
+                        }
+                    }
+                ]
+            }
+        ],
+        "product-lineitems": [
+            {
+                "product-lineitem": [
+                    {
+                        "product-id": [
+                            "100081976"
+                        ],
+                        "position": [
+                            "1"
+                        ],
+                        "custom-attributes": [
+                            {
+                                "custom-attribute": [
+                                    {
+                                        "$": {
+                                            "attribute-id": "lineitem-status"
+                                        },
+                                        "value": [
+                                            "1-DELIVERED"
+                                        ]
+                                    },
+                                    {
+                                        "_": "2024-01-28T14:17:04.000Z",
+                                        "$": {
+                                            "attribute-id": "shippingDate"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

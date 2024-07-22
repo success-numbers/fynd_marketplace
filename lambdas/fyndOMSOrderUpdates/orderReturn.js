@@ -65,7 +65,7 @@ const getReturnInfo = (shipment) => {
     countryCode: billAddr.country_iso_code,
     RMA_NBR: '', // TODO: ask from NICE => what to map
     return_source: 'WEB',
-    fullOrderReturn: true,
+    fullOrderReturn: false,
     items: getItems(shipment.bags)
   }
 

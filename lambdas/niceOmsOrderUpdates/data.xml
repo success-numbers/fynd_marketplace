@@ -21,6 +21,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA200016414">
 		<status>
 			<order-status>COMPLETED</order-status>
@@ -43,6 +44,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA200016417">
 		<status>
 			<order-status>COMPLETED</order-status>
@@ -65,6 +67,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA200016409">
 		<status>
 			<order-status>INTRANSIT</order-status>
@@ -87,6 +90,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+
 	<order order-no="SA200016409">
 		<status>
 			<order-status>COMPLETED</order-status>
@@ -109,6 +113,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA200016414">
 		<status>
 			<order-status>COMPLETED</order-status>
@@ -131,6 +136,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA00465005">
 		<status>
 			<order-status>COMPLETED</order-status>
@@ -173,6 +179,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA200016417">
 		<status>
 			<order-status>COMPLETED</order-status>
@@ -195,6 +202,7 @@
 			</product-lineitem>
 		</product-lineitems>
 	</order>
+	
 	<order order-no="SA200016411">
 		<status>
 			<order-status>COMPLETED</order-status>

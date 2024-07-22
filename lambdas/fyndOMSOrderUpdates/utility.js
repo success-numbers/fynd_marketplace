@@ -18,7 +18,7 @@ exports.statusFlowConsumer = async (eventPayload, fyndAuthToken) => {
       // console.log("MEOW ORDER DATA", JSON.stringify(getOrderData))
       return orderCancellation(eventPayload, getOrderData)
     }
-    case 'return_bag_delivered' : {
+    case 'return_in_transit' : {
       return orderReturnTransformer(eventPayload)
     }
     default:
